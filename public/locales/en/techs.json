@@ -1,0 +1,9 @@
+{
+    "technologiesHeading": "List of technologies used on the corporate site",
+    "infoHeading": "Supplementary information",
+    "market": "Listed market",
+    "lastCheckedAt": "Last checked at",
+    "intlDateTime": "{{val, datetime}}",
+    "link": "Checked URL",
+    "aside1": "The technology used on the website is checked at least once a month."
+}

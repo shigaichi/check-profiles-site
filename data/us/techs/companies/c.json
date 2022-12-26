@@ -1,0 +1,415 @@
+{
+    "name": "Citigroup",
+    "market": "NYSE",
+    "lastCheckedAt": "2022-12-12 12:39:24.680967",
+    "urls": {
+        "https://www.citigroup.com/": {
+            "status": 301
+        },
+        "http://www.citigroup.com/citi/": {
+            "status": 301
+        },
+        "https://www.citigroup.com/citi/": {
+            "status": 200
+        }
+    },
+    "categories": [
+        {
+            "id": 66,
+            "name": "UI frameworks",
+            "slug": "ui-frameworks",
+            "technologies": [
+                {
+                    "cpe": "cpe:2.3:a:getbootstrap:bootstrap:*:*:*:*:*:*:*:*",
+                    "icon": "Bootstrap.svg",
+                    "name": "Bootstrap",
+                    "slug": "bootstrap",
+                    "version": "4.5.2",
+                    "website": "https://getbootstrap.com",
+                    "categories": [
+                        {
+                            "id": 66,
+                            "name": "UI frameworks",
+                            "slug": "ui-frameworks"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components."
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "JavaScript frameworks",
+            "slug": "javascript-frameworks",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "RequireJS.png",
+                    "name": "RequireJS",
+                    "slug": "requirejs",
+                    "version": "2.3.2",
+                    "website": "http://requirejs.org",
+                    "categories": [
+                        {
+                            "id": 12,
+                            "name": "JavaScript frameworks",
+                            "slug": "javascript-frameworks"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "RequireJS is a JavaScript library and file loader which manages the dependencies between JavaScript files and in modular programming."
+                }
+            ]
+        },
+        {
+            "id": 77,
+            "name": "Retargeting",
+            "slug": "retargeting",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "PebblePost.svg",
+                    "name": "PebblePost",
+                    "slug": "pebblepost",
+                    "version": null,
+                    "website": "https://www.pebblepost.com",
+                    "categories": [
+                        {
+                            "id": 77,
+                            "name": "Retargeting",
+                            "slug": "retargeting"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "PebblePost provides marketers a way to transform recent online data into intelligent direct mail programs that perform."
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Analytics",
+            "slug": "analytics",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Google Analytics.svg",
+                    "name": "Google Analytics",
+                    "slug": "google-analytics",
+                    "version": null,
+                    "website": "http://google.com/analytics",
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Google Analytics is a free web analytics service that tracks and reports website traffic."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Facebook.svg",
+                    "name": "Facebook Pixel",
+                    "slug": "facebook-pixel",
+                    "version": "2.9.89",
+                    "website": "http://facebook.com",
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Adobe Analytics.svg",
+                    "name": "Adobe Analytics",
+                    "slug": "adobe-analytics",
+                    "version": null,
+                    "website": "https://www.adobe.com/analytics/adobe-analytics.html",
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Analytics is a web analytics, marketing and cross-channel analytics application."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Linkedin.svg",
+                    "name": "Linkedin Insight Tag",
+                    "slug": "linkedin-insight-tag",
+                    "version": null,
+                    "website": "https://business.linkedin.com/marketing-solutions/insight-tag",
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics."
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "name": "Font scripts",
+            "slug": "font-scripts",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "font-awesome.svg",
+                    "name": "Font Awesome",
+                    "slug": "font-awesome",
+                    "version": null,
+                    "website": "https://fontawesome.com/",
+                    "categories": [
+                        {
+                            "id": 17,
+                            "name": "Font scripts",
+                            "slug": "font-scripts"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Font Awesome is a font and icon toolkit based on CSS and Less."
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "name": "Tag managers",
+            "slug": "tag-managers",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "ensighten.png",
+                    "name": "Ensighten",
+                    "slug": "ensighten",
+                    "version": null,
+                    "website": "https://success.ensighten.com/hc/en-us",
+                    "categories": [
+                        {
+                            "id": 42,
+                            "name": "Tag managers",
+                            "slug": "tag-managers"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Ensighten is a solution that enables secure management, implementation and control of website technologies."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Adobe Experience Platform.svg",
+                    "name": "Adobe Experience Platform Launch",
+                    "slug": "adobe-experience-platform-launch",
+                    "version": null,
+                    "website": "https://docs.adobelaunch.com/getting-started",
+                    "categories": [
+                        {
+                            "id": 42,
+                            "name": "Tag managers",
+                            "slug": "tag-managers"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Experience Cloud Launch is an extendable tag management solution for Adobe Experience Cloud, Adobe Experience Platform, and other applications."
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Security",
+            "slug": "security",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "akamai.svg",
+                    "name": "Akamai Bot Manager",
+                    "slug": "akamai-bot-manager",
+                    "version": null,
+                    "website": "https://www.akamai.com/us/en/products/security/bot-manager.jsp",
+                    "categories": [
+                        {
+                            "id": 16,
+                            "name": "Security",
+                            "slug": "security"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Akamai Bot Manager detect bots using device fingerprinting bot signatures."
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "name": "Advertising",
+            "slug": "advertising",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Twitter.svg",
+                    "name": "Twitter Ads",
+                    "slug": "twitter-ads",
+                    "version": null,
+                    "website": "https://ads.twitter.com",
+                    "categories": [
+                        {
+                            "id": 36,
+                            "name": "Advertising",
+                            "slug": "advertising"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Twitter Ads is an advertising platform for Twitter 'microblogging' system."
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "name": "JavaScript libraries",
+            "slug": "javascript-libraries",
+            "technologies": [
+                {
+                    "cpe": "cpe:2.3:a:lodash:lodash:*:*:*:*:*:*:*:*",
+                    "icon": "Lo-dash.png",
+                    "name": "Lodash",
+                    "slug": "lodash",
+                    "version": "4.17.21",
+                    "website": "http://www.lodash.com",
+                    "categories": [
+                        {
+                            "id": 59,
+                            "name": "JavaScript libraries",
+                            "slug": "javascript-libraries"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Lodash is a JavaScript library which provides utility functions for common programming tasks using the functional programming paradigm."
+                },
+                {
+                    "cpe": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+                    "icon": "jQuery.svg",
+                    "name": "jQuery",
+                    "slug": "jquery",
+                    "version": "3.5.1",
+                    "website": "https://jquery.com",
+                    "categories": [
+                        {
+                            "id": 59,
+                            "name": "JavaScript libraries",
+                            "slug": "javascript-libraries"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "jQuery is a JavaScript library which is a free, open-source software designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax."
+                }
+            ]
+        },
+        {
+            "id": 97,
+            "name": "Customer data platform",
+            "slug": "customer-data-platform",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Adobe.svg",
+                    "name": "Adobe Experience Platform Identity Service",
+                    "slug": "adobe-experience-platform-identity-service",
+                    "version": null,
+                    "website": "https://docs.adobe.com/content/help/en/id-service/using/home.html",
+                    "categories": [
+                        {
+                            "id": 97,
+                            "name": "Customer data platform",
+                            "slug": "customer-data-platform"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Experience Platform Identity Service creates identity graphs that hold customer profiles and the known identifiers that belong to individual consumers."
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "name": "SSL/TLS certificate authorities",
+            "slug": "ssl-tls-certificate-authorities",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "DigiCert.svg",
+                    "name": "DigiCert",
+                    "slug": "digicert",
+                    "version": null,
+                    "website": "https://www.digicert.com/",
+                    "categories": [
+                        {
+                            "id": 70,
+                            "name": "SSL/TLS certificate authorities",
+                            "slug": "ssl-tls-certificate-authorities"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": null
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "name": "CDN",
+            "slug": "cdn",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "akamai.svg",
+                    "name": "Akamai",
+                    "slug": "akamai",
+                    "version": null,
+                    "website": "http://akamai.com",
+                    "categories": [
+                        {
+                            "id": 31,
+                            "name": "CDN",
+                            "slug": "cdn"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Akamai is global content delivery network (CDN) services provider for media and software delivery, and cloud security solutions."
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Miscellaneous",
+            "slug": "miscellaneous",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "PWA.svg",
+                    "name": "PWA",
+                    "slug": "pwa",
+                    "version": null,
+                    "website": "https://web.dev/progressive-web-apps/",
+                    "categories": [
+                        {
+                            "id": 19,
+                            "name": "Miscellaneous",
+                            "slug": "miscellaneous"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase."
+                }
+            ]
+        }
+    ]
+}

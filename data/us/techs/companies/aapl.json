@@ -1,0 +1,112 @@
+{
+    "name": "Apple Inc.",
+    "market": "Nasdaq",
+    "lastCheckedAt": "2022-12-12 12:39:24.680967",
+    "urls": {
+        "https://www.apple.com/": {
+            "status": 200
+        }
+    },
+    "categories": [
+        {
+            "id": 6,
+            "name": "Ecommerce",
+            "slug": "ecommerce",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Cart-generic.svg",
+                    "name": "Cart Functionality",
+                    "slug": "cart-functionality",
+                    "version": null,
+                    "website": "https://www.wappalyzer.com/technologies/ecommerce/cart-functionality",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 6,
+                            "name": "Ecommerce",
+                            "slug": "ecommerce"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Websites that have a shopping cart or checkout page, either using a known ecommerce platform or a custom solution."
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Analytics",
+            "slug": "analytics",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Adobe Analytics.svg",
+                    "name": "Adobe Analytics",
+                    "slug": "adobe-analytics",
+                    "version": null,
+                    "website": "https://www.adobe.com/analytics/adobe-analytics.html",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Analytics is a web analytics, marketing and cross-channel analytics application."
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Security",
+            "slug": "security",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "default.svg",
+                    "name": "HSTS",
+                    "slug": "hsts",
+                    "version": null,
+                    "website": "https://www.rfc-editor.org/rfc/rfc6797#section-6.1",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 16,
+                            "name": "Security",
+                            "slug": "security"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS."
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Miscellaneous",
+            "slug": "miscellaneous",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Open Graph.png",
+                    "name": "Open Graph",
+                    "slug": "open-graph",
+                    "version": null,
+                    "website": "https://ogp.me",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 19,
+                            "name": "Miscellaneous",
+                            "slug": "miscellaneous"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Open Graph is a protocol that is used to integrate any web page into the social graph."
+                }
+            ]
+        }
+    ]
+}
