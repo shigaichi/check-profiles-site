@@ -1,0 +1,72 @@
+{
+    "totalCompanyNumber": 1000,
+    "techs": [
+        {
+            "cpe": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+            "icon": "jQuery.svg",
+            "name": "jQuery",
+            "slug": "jquery",
+            "website": "https://jquery.com",
+            "categories": [
+                {
+                    "id": 59,
+                    "name": "JavaScript libraries",
+                    "slug": "javascript-libraries"
+                }
+            ],
+            "companies": [
+                {
+                    "ticker": "C",
+                    "name": "Citigroup",
+                    "version": "3.5.1"
+                },
+                {
+                    "ticker": "MSFT",
+                    "name": "Microsoft Corporation",
+                    "version": "3.5.1"
+                },
+                {
+                    "ticker": "BHLL",
+                    "name": "Bunker Hill Mining Corp.",
+                    "version": "3.2.1"
+                },
+                {
+                    "ticker": "MMM",
+                    "name": "3M Company",
+                    "version": "1.11.3"
+                },
+                {
+                    "ticker": "CVX",
+                    "name": "Chevron Corporation",
+                    "version": "3.6.0"
+                }
+            ]
+        },
+        {
+            "cpe": null,
+            "icon": "Google Analytics.svg",
+            "name": "Google Analytics",
+            "slug": "google-analytics",
+            "website": "http://google.com/analytics",
+            "categories": [
+                {
+                    "id": 10,
+                    "name": "Analytics",
+                    "slug": "analytics"
+                }
+            ],
+            "companies": [
+                {
+                    "ticker": "C",
+                    "name": "Citigroup",
+                    "version": null
+                },
+                {
+                    "ticker": "CVVUF",
+                    "name": "CanAlaska Uranium Ltd.",
+                    "version": null
+                }
+            ]
+        }
+    ]
+}

@@ -15,6 +15,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import path from 'path'
 import CompanyInfo from '../../../../../components/techs/company/companyInfo'
 import TechnologiesList from '../../../../../components/techs/company/technologiesList'
+import { Markets } from '../../../../../consts/markets'
 import companies from '../../../../../data/us/techs/companies.json'
 import i18nextConfig from '../../../../../next-i18next.config'
 
@@ -65,7 +66,7 @@ export const getStaticPaths: GetStaticPaths = () => {
         params: {
           locale: lng,
           code: company.toLowerCase(),
-          market: 'us',
+          market: Markets.US,
         },
       }))
     )

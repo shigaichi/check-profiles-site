@@ -11,8 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write \"./{pages,lib,components}/**/*.{ts,tsx}\"",
-    "format:check": "prettier --check \"./{pages,lib,components}/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"./{pages,lib,components,consts}/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"./{pages,lib,components,consts}/**/*.{ts,tsx}\"",
     "serve": "http-server out -p 8080"
   },
   "dependencies": {
