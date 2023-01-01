@@ -1,4 +1,5 @@
 {
+    "techsHeading": "上場企業のコーポレートサイトで使われているWeb技術",
     "technologyUsingCompany": "{{val}} を使っている企業一覧",
     "companyNumber": "上場企業 {{totalNumber}} 社中 {{usingCompanyNumber}} 社がコーポレートサイトで {{technologyName}} を使っています",
     "technologiesHeading": "コーポレートサイトで使われている技術一覧",
@@ -7,11 +8,12 @@
     "lastCheckedAt": "最新チェック日時",
     "intlDateTime": "{{val, datetime}}",
     "link": "チェック対象URL",
-    "aside1": "ウェブサイトの技術は最低1ヶ月に一度確認しています。",
-    "aside2": "コーポレートサイトは基本的にに投資家などに向けたページです。顧客向けなどではない可能性があります。",
-    "aside3": "一覧にはファンドなどを含みます。",
-    "aside4": "主にファンドなどで複数の企業のサイトが同一のドメインに存在することがあります。",
-    "allCompaniesList":"企業一覧",
+    "targetAside": "調査対象は各社のコーポレートサイトです。",
+    "periodAside": "ウェブサイトの技術は最低1ヶ月に一度確認しています。",
+    "siteAside": "コーポレートサイトは基本的にに投資家などに向けたページです。顧客向けなどではない可能性があります。",
+    "fundsAside": "調査対象にはファンドなどを含みます。",
+    "multipleAside": "主にファンドなどで複数の企業のサイトが同一のドメインに存在することがあります。",
+    "allCompaniesList": "企業一覧",
     "next": "次へ",
-    "prev":"前へ"
+    "prev": "前へ"
 }

@@ -67,6 +67,27 @@
                     "version": null
                 }
             ]
+        },
+        {
+            "cpe": "cpe:2.3:a:lodash:lodash:*:*:*:*:*:*:*:*",
+            "icon": "Lo-dash.png",
+            "name": "Lodash",
+            "slug": "lodash",
+            "website": "http://www.lodash.com",
+            "categories": [
+                {
+                    "id": 59,
+                    "name": "JavaScript libraries",
+                    "slug": "javascript-frameworks"
+                }
+            ],
+            "companies": [
+                {
+                    "ticker": "MMM",
+                    "name": "3M Company",
+                    "version": "1.4.4"
+                }
+            ]
         }
     ]
 }

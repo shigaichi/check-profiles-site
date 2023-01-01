@@ -1,4 +1,5 @@
 {
+    "techsHeading": "Web technologies used by listed companies",
     "technologyUsingCompany": "List of companies using React {{val}}",
     "companyNumber": "{{usingCompanyNumber}} out of {{totalNumber}} listed companies use {{technologyName}} in their corporate websites",
     "technologiesHeading": "List of technologies used on the corporate site",
@@ -7,10 +8,11 @@
     "lastCheckedAt": "Last checked at",
     "intlDateTime": "{{val, datetime}}",
     "link": "Checked URL",
-    "aside1": "The technology used on the website is checked at least once a month.",
-    "aside2": "Corporate sites are basically a page for investors, etc. May not be a site for general consumer",
-    "aside3": "The list includes funds, etc.",
-    "aside4": "Multiple corporate sites may exist on the same domain, mainly funds.",
+    "targetAside": "The survey targets corporate websites.",
+    "periodAside": "The technology used on the website is checked at least once a month.",
+    "siteAside": "Corporate sites are basically a page for investors, etc. May not be a site for general consumer",
+    "fundsAside": "The survey targets includes funds, etc.",
+    "multipleAside": "Multiple corporate sites may exist on the same domain, mainly funds.",
     "allCompaniesList": "List of Companies",
     "next": "Next",
     "prev": "Prev"

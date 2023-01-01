@@ -11,6 +11,7 @@ import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
+import AsideInfo from '../../../../../components/common/asideInfo'
 import AllCompaniesList from '../../../../../components/techs/technologies/allCompaniesList'
 import { ALPHABETS } from '../../../../../consts/initials'
 import { Markets } from '../../../../../consts/markets'
@@ -53,20 +54,7 @@ const Technology: NextPage<Props> = (props) => {
 
       <Divider />
 
-      <Card>
-        <CardBody>
-          <UnorderedList>
-            <ListItem>{t('aside1')}</ListItem>
-            <ListItem>{t('aside2')}</ListItem>
-            {router.query.market === Markets.US && (
-              <>
-                <ListItem>{t('aside3')}</ListItem>
-                <ListItem>{t('aside4')}</ListItem>
-              </>
-            )}
-          </UnorderedList>
-        </CardBody>
-      </Card>
+      <AsideInfo />
     </VStack>
   )
 }

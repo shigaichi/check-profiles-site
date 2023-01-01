@@ -1,18 +1,11 @@
-import {
-  Card,
-  CardBody,
-  Divider,
-  Heading,
-  ListItem,
-  UnorderedList,
-  VStack,
-} from '@chakra-ui/react'
+import { Divider, Heading, VStack } from '@chakra-ui/react'
 import { parse } from 'date-fns'
 import fs from 'fs'
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import path from 'path'
+import AsideInfo from '../../../../../components/common/asideInfo'
 import CompanyInfo from '../../../../../components/techs/company/companyInfo'
 import TechnologiesList from '../../../../../components/techs/company/technologiesList'
 import { Markets } from '../../../../../consts/markets'
@@ -43,13 +36,7 @@ const Code: NextPage<Props> = (props) => {
       />
       <TechnologiesList categories={props.categories} />
       <Divider />
-      <Card>
-        <CardBody>
-          <UnorderedList>
-            <ListItem>{t('aside1')}</ListItem>
-          </UnorderedList>
-        </CardBody>
-      </Card>
+      <AsideInfo />
     </VStack>
   )
 }
