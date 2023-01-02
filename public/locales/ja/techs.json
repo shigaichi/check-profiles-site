@@ -1,5 +1,8 @@
 {
     "techsHeading": "上場企業のコーポレートサイトで使われているWeb技術",
+    "categoriesHeading": "技術カテゴリー一覧",
+    "categoriesAside": "検出された技術のカテゴリー一覧",
+    "categoryHeading": "{{val}} カテゴリーの技術一覧",
     "technologyUsingCompany": "{{val}} を使っている企業一覧",
     "companyNumber": "上場企業 {{totalNumber}} 社中 {{usingCompanyNumber}} 社がコーポレートサイトで {{technologyName}} を使っています",
     "technologiesHeading": "コーポレートサイトで使われている技術一覧",

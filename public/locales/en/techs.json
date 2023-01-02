@@ -1,5 +1,8 @@
 {
     "techsHeading": "Web technologies used by listed companies",
+    "categoriesHeading": "List of Technology Categories",
+    "categoriesAside": "List of detected technology categories",
+    "categoryHeading": "List of Technology in the {{val}} category",
     "technologyUsingCompany": "List of companies using React {{val}}",
     "companyNumber": "{{usingCompanyNumber}} out of {{totalNumber}} listed companies use {{technologyName}} in their corporate websites",
     "technologiesHeading": "List of technologies used on the corporate site",
