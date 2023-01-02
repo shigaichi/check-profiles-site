@@ -22,7 +22,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 const Category: NextPage<Props> = (props) => {
   const { t } = useTranslation('techs')
   const router = useRouter()
-  console.log(router.pathname)
 
   const technologies = props.techs.map((tech) => {
     const href = {
