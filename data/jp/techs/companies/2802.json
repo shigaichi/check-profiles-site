@@ -1,0 +1,402 @@
+{
+    "code": "2802",
+    "nameJa": "味の素株式会社",
+    "nameEn": "Ajinomoto Co., Inc.",
+    "marketJa": "プライム市場",
+    "marketEn": "Prime Market",
+    "lastCheckedAt": "2022-12-19 05:21:42.136220",
+    "urls": {
+        "https://www.ajinomoto.co.jp/": {
+            "status": 200
+        }
+    },
+    "categories": [
+        {
+            "id": 14,
+            "name": "Video players",
+            "slug": "video-players",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "YouTube.png",
+                    "name": "YouTube",
+                    "slug": "youtube",
+                    "version": null,
+                    "website": "http://www.youtube.com",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 14,
+                            "name": "Video players",
+                            "slug": "video-players"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "YouTube is a video sharing service where users can create their own profile, upload videos, watch, like and comment on other videos."
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "name": "Load balancers",
+            "slug": "load-balancers",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Amazon ELB.svg",
+                    "name": "Amazon ALB",
+                    "slug": "amazon-alb",
+                    "version": null,
+                    "website": "https://aws.amazon.com/elasticloadbalancing/",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 65,
+                            "name": "Load balancers",
+                            "slug": "load-balancers"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Amazon Application Load Balancer (ALB) distributes incoming application traffic to increase availability and support content-based routing."
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "name": "Web frameworks",
+            "slug": "web-frameworks",
+            "technologies": [
+                {
+                    "cpe": "cpe:2.3:a:microsoft:asp.net:*:*:*:*:*:*:*:*",
+                    "icon": "Microsoft ASP.NET.svg",
+                    "name": "Microsoft ASP.NET",
+                    "slug": "microsoft-asp-net",
+                    "version": null,
+                    "website": "https://www.asp.net",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 18,
+                            "name": "Web frameworks",
+                            "slug": "web-frameworks"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "ASP.NET is an open-source, server-side web-application framework designed for web development to produce dynamic web pages."
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "name": "PaaS",
+            "slug": "paas",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Amazon Web Services.svg",
+                    "name": "Amazon Web Services",
+                    "slug": "amazon-web-services",
+                    "version": null,
+                    "website": "https://aws.amazon.com/",
+                    "categories": [
+                        {
+                            "id": 62,
+                            "name": "PaaS",
+                            "slug": "paas"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality."
+                }
+            ]
+        },
+        {
+            "id": 36,
+            "name": "Advertising",
+            "slug": "advertising",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Google Ads.svg",
+                    "name": "Google Ads",
+                    "slug": "google-ads",
+                    "version": null,
+                    "website": "https://ads.google.com",
+                    "categories": [
+                        {
+                            "id": 36,
+                            "name": "Advertising",
+                            "slug": "advertising"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Google Ads is an online advertising platform developed by Google."
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "name": "Tag managers",
+            "slug": "tag-managers",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Google Tag Manager.svg",
+                    "name": "Google Tag Manager",
+                    "slug": "google-tag-manager",
+                    "version": null,
+                    "website": "http://www.google.com/tagmanager",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 42,
+                            "name": "Tag managers",
+                            "slug": "tag-managers"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Google Tag Manager is a tag management system (TMS) that allows you to quickly and easily update measurement codes and related code fragments collectively known as tags on your website or mobile app."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Adobe Experience Platform.svg",
+                    "name": "Adobe Experience Platform Launch",
+                    "slug": "adobe-experience-platform-launch",
+                    "version": null,
+                    "website": "https://docs.adobelaunch.com/getting-started",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 42,
+                            "name": "Tag managers",
+                            "slug": "tag-managers"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Experience Cloud Launch is an extendable tag management solution for Adobe Experience Cloud, Adobe Experience Platform, and other applications."
+                }
+            ]
+        },
+        {
+            "id": 97,
+            "name": "Customer data platform",
+            "slug": "customer-data-platform",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Treasure Data.svg",
+                    "name": "Treasure Data",
+                    "slug": "treasure-data",
+                    "version": "2.2.0",
+                    "website": "https://www.treasuredata.com",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 97,
+                            "name": "Customer data platform",
+                            "slug": "customer-data-platform"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Treasure Data is the only enterprise customer data platform."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Adobe.svg",
+                    "name": "Adobe Experience Platform Identity Service",
+                    "slug": "adobe-experience-platform-identity-service",
+                    "version": null,
+                    "website": "https://docs.adobe.com/content/help/en/id-service/using/home.html",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 97,
+                            "name": "Customer data platform",
+                            "slug": "customer-data-platform"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Experience Platform Identity Service creates identity graphs that hold customer profiles and the known identifiers that belong to individual consumers."
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Analytics",
+            "slug": "analytics",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Microsoft Clarity.svg",
+                    "name": "Microsoft Clarity",
+                    "slug": "microsoft-clarity",
+                    "version": "0.7.1",
+                    "website": "https://clarity.microsoft.com",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Microsoft's Clarity is a analytics tool which provides website usage statistics, session recording, and heatmaps."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Google Analytics.svg",
+                    "name": "Google Analytics",
+                    "slug": "google-analytics",
+                    "version": null,
+                    "website": "http://google.com/analytics",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Google Analytics is a free web analytics service that tracks and reports website traffic."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Adobe Analytics.svg",
+                    "name": "Adobe Analytics",
+                    "slug": "adobe-analytics",
+                    "version": null,
+                    "website": "https://www.adobe.com/analytics/adobe-analytics.html",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Analytics is a web analytics, marketing and cross-channel analytics application."
+                },
+                {
+                    "cpe": null,
+                    "icon": "Google.svg",
+                    "name": "Google Ads Conversion Tracking",
+                    "slug": "google-ads-conversion-tracking",
+                    "version": null,
+                    "website": "https://support.google.com/google-ads/answer/1722022",
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Google Ads Conversion Tracking is a free tool that shows you what happens after a customer interacts with your ads."
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Security",
+            "slug": "security",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "default.svg",
+                    "name": "HSTS",
+                    "slug": "hsts",
+                    "version": null,
+                    "website": "https://www.rfc-editor.org/rfc/rfc6797#section-6.1",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 16,
+                            "name": "Security",
+                            "slug": "security"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS."
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "name": "CDN",
+            "slug": "cdn",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Amazon Cloudfront.svg",
+                    "name": "Amazon Cloudfront",
+                    "slug": "amazon-cloudfront",
+                    "version": null,
+                    "website": "http://aws.amazon.com/cloudfront/",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 31,
+                            "name": "CDN",
+                            "slug": "cdn"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds."
+                }
+            ]
+        },
+        {
+            "id": 70,
+            "name": "SSL/TLS certificate authorities",
+            "slug": "ssl-tls-certificate-authorities",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "AWS Certificate Manager.svg",
+                    "name": "AWS Certificate Manager",
+                    "slug": "aws-certificate-manager",
+                    "version": null,
+                    "website": "https://aws.amazon.com/certificate-manager/",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 70,
+                            "name": "SSL/TLS certificate authorities",
+                            "slug": "ssl-tls-certificate-authorities"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "AWS Certificate Manager is a service that lets you easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates for use with AWS services and your internal connected resources."
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "name": "Miscellaneous",
+            "slug": "miscellaneous",
+            "technologies": [
+                {
+                    "cpe": null,
+                    "icon": "Open Graph.png",
+                    "name": "Open Graph",
+                    "slug": "open-graph",
+                    "version": null,
+                    "website": "https://ogp.me",
+                    "rootPath": true,
+                    "categories": [
+                        {
+                            "id": 19,
+                            "name": "Miscellaneous",
+                            "slug": "miscellaneous"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Open Graph is a protocol that is used to integrate any web page into the social graph."
+                }
+            ]
+        }
+    ]
+}

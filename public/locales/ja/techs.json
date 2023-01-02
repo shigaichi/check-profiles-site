@@ -8,6 +8,7 @@
     "technologiesHeading": "コーポレートサイトで使われている技術一覧",
     "infoHeading": "付帯情報",
     "market": "上場市場",
+    "companyCode": "銘柄コード",
     "lastCheckedAt": "最新チェック日時",
     "intlDateTime": "{{val, datetime}}",
     "link": "チェック対象URL",

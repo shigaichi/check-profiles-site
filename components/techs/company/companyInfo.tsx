@@ -13,6 +13,7 @@ import {
 import { useTranslation } from 'next-i18next'
 
 type CompanyInfoProps = {
+  companyCode: string
   companyName: string
   link: string
   market: string
@@ -38,6 +39,14 @@ const CompanyInfo = (props: CompanyInfoProps) => {
             </Heading>
             <Text pt="2" fontSize="sm">
               {props.market}
+            </Text>
+          </Box>
+          <Box>
+            <Heading as="h3" size="xs" textTransform="uppercase">
+              {t('companyCode')}
+            </Heading>
+            <Text pt="2" fontSize="sm">
+              {props.companyCode}
             </Text>
           </Box>
           <Box>

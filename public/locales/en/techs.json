@@ -8,6 +8,7 @@
     "technologiesHeading": "List of technologies used on the corporate site",
     "infoHeading": "Supplementary information",
     "market": "Listed market",
+    "companyCode": "Ticker symbol",
     "lastCheckedAt": "Last checked at",
     "intlDateTime": "{{val, datetime}}",
     "link": "Checked URL",

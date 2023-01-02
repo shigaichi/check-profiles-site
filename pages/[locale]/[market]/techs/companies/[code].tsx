@@ -1,22 +1,20 @@
 import { Divider, Heading, VStack } from '@chakra-ui/react'
+import AsideInfo from 'components/common/asideInfo'
+import CompanyInfo from 'components/techs/company/companyInfo'
+import TechnologiesList from 'components/techs/company/technologiesList'
+import { Markets } from 'consts/markets'
+import jaCompanies from 'data/jp/techs/companies.json'
+import usCompanies from 'data/us/techs/companies.json'
 import { parse } from 'date-fns'
 import fs from 'fs'
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
-import { useTranslation } from 'next-i18next'
+import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import path from 'path'
-import AsideInfo from '../../../../../components/common/asideInfo'
-import CompanyInfo from '../../../../../components/techs/company/companyInfo'
-import TechnologiesList from '../../../../../components/techs/company/technologiesList'
-import { Markets } from '../../../../../consts/markets'
-import companies from '../../../../../data/us/techs/companies.json'
-import i18nextConfig from '../../../../../next-i18next.config'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Code: NextPage<Props> = (props) => {
-  const { t } = useTranslation(['techs'])
-
   const lastCheckedAt = parse(
     props.lastCheckedAt,
     'yyyy-MM-dd hh:mm:ss.SSSSSS',
@@ -29,6 +27,7 @@ const Code: NextPage<Props> = (props) => {
         {props.name}
       </Heading>
       <CompanyInfo
+        companyCode={props.code}
         companyName={props.name}
         lastChecked={lastCheckedAt}
         link={props.url}
@@ -44,19 +43,22 @@ const Code: NextPage<Props> = (props) => {
 export default Code
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const companyData = companies.companies
-
-  //TODO: add JPX
   const us = i18nextConfig.i18n.locales
     .map((lng) =>
-      companyData.map((company) => ({
-        params: {
-          locale: lng,
-          code: company.toLowerCase(),
-          market: Markets.US,
-        },
-      }))
+      Object.values(Markets).map((market) =>
+        (market === Markets.US
+          ? usCompanies.companies
+          : jaCompanies.companies
+        ).map((company) => ({
+          params: {
+            locale: lng,
+            code: company.toLowerCase(),
+            market: market,
+          },
+        }))
+      )
     )
+    .flat()
     .flat()
 
   return {
@@ -70,7 +72,7 @@ export const getStaticProps = async (context: any) => {
     fs.readFileSync(
       path.resolve(
         process.cwd(),
-        `data/${context.params?.market}/techs/companies/${context.params?.code}.json`
+        `data/${context.params.market}/techs/companies/${context.params.code}.json`
       ),
       'utf-8'
     )
@@ -82,12 +84,13 @@ export const getStaticProps = async (context: any) => {
 
   return {
     props: {
-      name: json.name,
-      market: json.market,
+      code: json.code,
+      name: context.params.locale === 'en' ? json.nameEn : json.nameJa,
+      market: context.params.locale === 'en' ? json.marketEn : json.marketJa,
       lastCheckedAt: json.lastCheckedAt,
       url: lastUrl,
       categories: json.categories,
-      ...(await serverSideTranslations(context?.params?.locale, ['techs'])),
+      ...(await serverSideTranslations(context.params.locale, ['techs'])),
     },
   }
 }

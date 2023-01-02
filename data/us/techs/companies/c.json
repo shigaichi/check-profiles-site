@@ -1,6 +1,9 @@
 {
-    "name": "Citigroup",
-    "market": "NYSE",
+    "code": "C",
+    "nameEn": "Citigroup",
+    "nameJa": "Citigroup",
+    "marketEn": "NYSE",
+    "marketJa": "NYSE",
     "lastCheckedAt": "2022-12-12 12:39:24.680967",
     "urls": {
         "https://www.citigroup.com/": {

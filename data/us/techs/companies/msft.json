@@ -1,6 +1,9 @@
 {
-    "name": "Microsoft Corporation",
-    "market": "Nasdaq",
+    "code": "MSFT",
+    "nameEn": "Microsoft Corporation",
+    "nameJa": "Microsoft Corporation",
+    "marketEn": "Nasdaq",
+    "marketJa": "Nasdaq",
     "lastCheckedAt": "2022-12-03 06:04:04.566628",
     "urls": {
         "https://www.microsoft.com/": {
