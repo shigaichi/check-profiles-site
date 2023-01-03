@@ -90,7 +90,10 @@ export const getStaticProps = async (context: any) => {
       lastCheckedAt: json.lastCheckedAt,
       url: lastUrl,
       categories: json.categories,
-      ...(await serverSideTranslations(context.params.locale, ['techs'])),
+      ...(await serverSideTranslations(context.params.locale, [
+        'top',
+        'techs',
+      ])),
     },
   }
 }

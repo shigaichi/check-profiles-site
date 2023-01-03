@@ -170,7 +170,10 @@ export const getStaticProps = async (context: any) => {
         }/techs/companies/${it.ticker.toLowerCase()}`,
       })),
       filteredInitials: filteredInitials,
-      ...(await serverSideTranslations(context.params.locale, ['techs'])),
+      ...(await serverSideTranslations(context.params.locale, [
+        'top',
+        'techs',
+      ])),
     },
   }
 }

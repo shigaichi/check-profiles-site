@@ -148,7 +148,10 @@ export const getStaticProps = async (context: any) => {
     props: {
       category: category,
       techs: techsOfCategory,
-      ...(await serverSideTranslations(context.params.locale, ['techs'])),
+      ...(await serverSideTranslations(context.params.locale, [
+        'top',
+        'techs',
+      ])),
     },
   }
 }
