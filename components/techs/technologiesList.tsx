@@ -8,6 +8,7 @@ import {
   ListItem,
   Stack,
   StackDivider,
+  Text,
   VStack,
 } from '@chakra-ui/react'
 import { NextPage } from 'next'
@@ -67,12 +68,26 @@ const TechnologiesList: NextPage<Props> = (props) => {
     )
   })
 
+  const toCategoryHref = {
+    pathname: router.pathname + '/categories',
+    query: {
+      locale: router.query.locale,
+      market: router.query.market,
+    },
+  }
+
   return (
     <Card>
       <CardHeader>
-        <Heading as="h2" size="md">
-          {t('technologiesHeading')}
-        </Heading>
+        <VStack align={'start'}>
+          <Heading as="h2" size="md">
+            {t('technologiesHeading')}
+          </Heading>
+          <Text>{t('featuredTechnologiesAside')}</Text>
+          <NextLink href={toCategoryHref} legacyBehavior passHref>
+            <Link>{t('techsToCategoriesLink')}</Link>
+          </NextLink>
+        </VStack>
       </CardHeader>
 
       <CardBody>
