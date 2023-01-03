@@ -122,9 +122,9 @@ export const getStaticProps = async (context: any) => {
           .flat()
           .some((company) => {
             if (letter !== ALPHABETS[0]) {
-              return company.name.toLowerCase().startsWith(letter)
+              return company.nameEn.toLowerCase().startsWith(letter)
             } else {
-              return !/^[A-Za-z]+/.test(company.name)
+              return !/^[A-Za-z]+/.test(company.nameEn)
             }
           })
       )

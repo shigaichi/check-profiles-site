@@ -1,14 +1,16 @@
 import { Card, CardBody, CardHeader, Heading } from '@chakra-ui/react'
+import AsideInfo from 'components/common/asideInfo'
+import TechnologiesList from 'components/techs/technologiesList'
+import { ALPHABETS, NUMBERS } from 'consts/initials'
+import { Markets } from 'consts/markets'
+import jpFeaturedTechs from 'data/jp/techs/featuredTechs.json'
+import jpTechs from 'data/jp/techs/techs.json'
+import usFeaturedTechs from 'data/us/techs/featuredTechs.json'
+import usTechs from 'data/us/techs/techs.json'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
+import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import AsideInfo from '../../../../components/common/asideInfo'
-import TechnologiesList from '../../../../components/techs/technologiesList'
-import { ALPHABETS } from '../../../../consts/initials'
-import { Markets } from '../../../../consts/markets'
-import featuredTechs from '../../../../data/featuredTechs.json'
-import techs from '../../../../data/us/techs/techs.json'
-import i18nextConfig from '../../../../next-i18next.config'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -38,12 +40,16 @@ export default Techs
 
 export const getStaticPaths = () => ({
   fallback: false,
-  paths: i18nextConfig.i18n.locales.map((lng) => ({
-    params: {
-      locale: lng,
-      market: Markets.US,
-    },
-  })),
+  paths: i18nextConfig.i18n.locales
+    .map((lng) =>
+      Object.values(Markets).map((market) => ({
+        params: {
+          locale: lng,
+          market: market,
+        },
+      }))
+    )
+    .flat(),
 })
 
 type Category = {
@@ -60,23 +66,28 @@ type Technology = {
 
 export const getStaticProps = async (context: any) => {
   //TODO: check slug can be null
-  const featuredTechsFromJson = featuredTechs.featuredTechs.map(
-    (featuredTech) => {
-      const featuredTechFromJson = techs.techs.find(
-        (tech) => tech.name === featuredTech
+  const techs = (context.params.market === Markets.US ? usTechs : jpTechs).techs
+  const initials = context.params.market === Markets.US ? ALPHABETS : NUMBERS
+
+  const featuredTechsFromJson = (
+    context.params.market === Markets.US ? usFeaturedTechs : jpFeaturedTechs
+  ).featuredTechs.map((featuredTech) => {
+    const featuredTechFromJson = techs.find(
+      (tech) => tech.name === featuredTech
+    )
+
+    if (featuredTechFromJson === undefined) {
+      throw Error(
+        `No company uses ${featuredTech} listed in the featured json file`
       )
-
-      if (featuredTechFromJson === undefined) {
-        throw Error('No company uses tech in the featured json file')
-      }
-
-      return {
-        name: featuredTech,
-        slug: featuredTechFromJson.slug,
-        category: featuredTechFromJson.categories[0],
-      }
     }
-  )
+
+    return {
+      name: featuredTech,
+      slug: featuredTechFromJson.slug,
+      category: featuredTechFromJson.categories[0],
+    }
+  })
 
   const categoryNames = Array.from(
     new Map(
@@ -90,28 +101,38 @@ export const getStaticProps = async (context: any) => {
     id: category.id,
     name: category.name,
     technologies: featuredTechsFromJson
+      // Find the initial to be linked from featuredTech
       .filter((tech) => tech?.category.name === category.name)
-      .map((tech) => {
-        const firstInitial = ALPHABETS.find((letter) =>
-          techs.techs
-            .filter((tech) => tech.name === tech.name)
+      .map((featuredTech) => {
+        const firstInitial = initials.find((letter) =>
+          techs
+            .filter((tech) => tech.name === featuredTech.name)
+            // List companies using featuredTech
             .map((tech) => tech.companies)
             .flat()
             .some((company) => {
-              if (letter !== ALPHABETS[0]) {
-                return company.name.toLowerCase().startsWith(letter)
+              if (context.params.market === Markets.US) {
+                if (letter !== ALPHABETS[0]) {
+                  return company.nameEn.toLowerCase().startsWith(letter)
+                } else {
+                  return !/^[A-Za-z]+/.test(company.nameEn)
+                }
               } else {
-                return !/^[A-Za-z]+/.test(company.name)
+                return company.ticker.startsWith(letter)
               }
             })
         )
 
         if (firstInitial === undefined) {
           // Basically does not occur
-          throw new Error(`can not find companies using ${tech.name}`)
+          throw new Error(`can not find companies using ${featuredTech.name}`)
         }
 
-        return { name: tech.name, slug: tech.slug, firstInitial: firstInitial }
+        return {
+          name: featuredTech.name,
+          slug: featuredTech.slug,
+          firstInitial: firstInitial,
+        }
       }),
   }))
 

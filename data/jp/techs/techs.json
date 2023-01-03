@@ -1,0 +1,77 @@
+{
+    "totalCompanyNumber": 500,
+    "techs": [
+        {
+            "cpe": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+            "icon": "jQuery.svg",
+            "name": "jQuery",
+            "slug": "jquery",
+            "website": "https://jquery.com",
+            "categories": [
+                {
+                    "id": 59,
+                    "name": "JavaScript libraries",
+                    "slug": "javascript-libraries"
+                }
+            ],
+            "companies": [
+                {
+                    "ticker": "1332",
+                    "nameJa": "日本水産株式会社",
+                    "nameEn": "Nippon Suisan Kaisha, Ltd.",
+                    "version": "3.3.1"
+                }
+            ]
+        },
+        {
+            "cpe": null,
+            "icon": "Google Analytics.svg",
+            "name": "Google Analytics",
+            "slug": "google-analytics",
+            "website": "http://google.com/analytics",
+            "categories": [
+                {
+                    "id": 10,
+                    "name": "Analytics",
+                    "slug": "analytics"
+                }
+            ],
+            "companies": [
+                {
+                    "ticker": "1332",
+                    "nameJa": "日本水産株式会社",
+                    "nameEn": "Nippon Suisan Kaisha, Ltd.",
+                    "version": null
+                },
+                {
+                    "ticker": "2802",
+                    "nameJa": "味の素株式会社",
+                    "nameEn": "Ajinomoto Co., Inc.",
+                    "version": null
+                }
+            ]
+        },
+        {
+            "cpe": "cpe:2.3:a:microsoft:asp.net:*:*:*:*:*:*:*:*",
+            "icon": "Microsoft ASP.NET.svg",
+            "name": "Microsoft ASP.NET",
+            "slug": "microsoft-asp-net",
+            "website": "https://www.asp.net",
+            "categories": [
+                {
+                    "id": 18,
+                    "name": "Web frameworks",
+                    "slug": "web-frameworks"
+                }
+            ],
+            "companies": [
+                {
+                    "ticker": "2802",
+                    "nameJa": "味の素株式会社",
+                    "nameEn": "Ajinomoto Co., Inc.",
+                    "version": null
+                }
+            ]
+        }
+    ]
+}

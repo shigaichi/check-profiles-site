@@ -7,22 +7,21 @@ import {
   UnorderedList,
   VStack,
 } from '@chakra-ui/react'
+import AsideInfo from 'components/common/asideInfo'
+import AllCompaniesList from 'components/techs/technologies/allCompaniesList'
+import { ALPHABETS, NUMBERS } from 'consts/initials'
+import { Markets } from 'consts/markets'
+import jpTechs from 'data/jp/techs/techs.json'
+import usTechs from 'data/us/techs/techs.json'
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
+import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useRouter } from 'next/router'
-import AsideInfo from '../../../../../components/common/asideInfo'
-import AllCompaniesList from '../../../../../components/techs/technologies/allCompaniesList'
-import { ALPHABETS } from '../../../../../consts/initials'
-import { Markets } from '../../../../../consts/markets'
-import usTechs from '../../../../../data/us/techs/techs.json'
-import i18nextConfig from '../../../../../next-i18next.config'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Technology: NextPage<Props> = (props) => {
   const { t } = useTranslation(['techs'])
-  const router = useRouter()
 
   //TODO: version
   return (
@@ -47,6 +46,7 @@ const Technology: NextPage<Props> = (props) => {
       <AllCompaniesList
         filteredInitials={props.filteredInitials}
         companies={props.companies.map((it) => ({
+          ticker: it.ticker,
           name: it.name,
           path: it.path,
         }))}
@@ -62,76 +62,95 @@ const Technology: NextPage<Props> = (props) => {
 export default Technology
 
 export const getStaticPaths: GetStaticPaths = () => {
-  //TODO: add JPX
-  const us = i18nextConfig.i18n.locales
+  const paths = i18nextConfig.i18n.locales
     .map((lng) =>
-      usTechs.techs.map((tech) => {
-        const filteredAlphabet = ALPHABETS.filter((letter) =>
-          tech.companies.some((company) => {
-            if (letter !== ALPHABETS[0]) {
-              return company.name.toLowerCase().startsWith(letter)
-            } else {
-              return !/^[A-Za-z]+/.test(company.name)
-            }
-          })
-        )
+      Object.values(Markets).map((market) =>
+        (market === Markets.US ? usTechs : jpTechs).techs.map((tech) => {
+          const initials = market === Markets.US ? ALPHABETS : NUMBERS
+          const filteredInitials = initials.filter((initial) =>
+            tech.companies.some((company) => {
+              if (market === Markets.US) {
+                if (initial !== ALPHABETS[0]) {
+                  return company.nameEn.toLowerCase().startsWith(initial)
+                } else {
+                  return !/^[A-Za-z]+/.test(company.nameEn)
+                }
+              } else {
+                return company.ticker.startsWith(initial)
+              }
+            })
+          )
 
-        return filteredAlphabet.map((letter) => {
-          return {
+          return filteredInitials.map((initial) => ({
             params: {
               locale: lng,
               technology: tech.slug,
-              market: Markets.US,
-              initial: letter,
+              market: market,
+              initial: initial,
             },
-          }
+          }))
         })
-      })
+      )
     )
+    .flat()
     .flat()
     .flat()
 
   return {
     fallback: false,
-    paths: us,
+    paths: paths,
   }
 }
 export const getStaticProps = async (context: any) => {
-  const technologyInfoList = usTechs.techs.filter(
+  const techs = context.params.market === Markets.US ? usTechs : jpTechs
+
+  const technologyInfoList = techs.techs.filter(
     (it) => it.slug === context.params.technology
   )
 
   if (technologyInfoList.length !== 1) {
+    // Basically not happen
     throw new Error(
-      'technologyInfoList.length: ' + technologyInfoList.length.toString()
+      `${technologyInfoList.length} ${context.params.technology} was found in techs.json`
     )
   }
 
   const technologyInfo = technologyInfoList[0]
 
+  // extract companies start with the params.initial and using the params.technology
   const filteredCompanies = technologyInfo.companies.flatMap((company) => {
-    if (context.params.initial === '0') {
-      if (/^[A-Za-z]+/.test(company.name)) {
-        return []
-      } else {
-        return company
+    if (context.params.market === Markets.US) {
+      if (context.params.initial === '0') {
+        if (/^[A-Za-z]+/.test(company.nameEn)) {
+          return []
+        } else {
+          return company
+        }
       }
-    }
 
-    if (company.name.toLowerCase().startsWith(context.params.initial)) {
-      return company
+      if (company.nameEn.toLowerCase().startsWith(context.params.initial)) {
+        return company
+      } else {
+        return []
+      }
     } else {
-      return []
+      return company.ticker.startsWith(context.params.initial) ? company : []
     }
   })
 
-  const filteredAlphabet = ALPHABETS.filter((letter) => {
+  // extract initials where a company exists starting with that
+  const initials = context.params.market === Markets.US ? ALPHABETS : NUMBERS
+  const filteredInitials = initials.filter((initial) => {
     return technologyInfo.companies.some((company) => {
       {
-        if (letter !== ALPHABETS[0]) {
-          return company.name.toLowerCase().startsWith(letter)
+        if (context.params.market === Markets.US) {
+          if (initial !== ALPHABETS[0]) {
+            return company.nameEn.toLowerCase().startsWith(initial)
+          } else {
+            return !/^[A-Za-z]+/.test(company.nameEn)
+          }
         } else {
-          return !/^[A-Za-z]+/.test(company.name)
+          return company.ticker.startsWith(initial)
         }
       }
     })
@@ -141,19 +160,17 @@ export const getStaticProps = async (context: any) => {
     props: {
       technologyName: technologyInfo.name,
       market: context.params.market as string,
-      totalNumber: usTechs.totalCompanyNumber,
+      totalNumber: techs.totalCompanyNumber,
       usingCompanyNumber: technologyInfo.companies.length,
       companies: filteredCompanies.map((it) => ({
-        name: it.name,
+        ticker: it.ticker,
+        name: context.params.locale === 'en' ? it.nameEn : it.nameJa,
         path: `/${context.params.locale}/${
           context.params.market
         }/techs/companies/${it.ticker.toLowerCase()}`,
       })),
-      filteredInitials: filteredAlphabet,
-      ...(await serverSideTranslations(context?.params?.locale, [
-        'techs',
-        'common',
-      ])),
+      filteredInitials: filteredInitials,
+      ...(await serverSideTranslations(context.params.locale, ['techs'])),
     },
   }
 }

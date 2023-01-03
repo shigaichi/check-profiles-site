@@ -17,27 +17,32 @@
             "companies": [
                 {
                     "ticker": "C",
-                    "name": "Citigroup",
+                    "nameEn": "Citigroup",
+                    "nameJa": "Citigroup",
                     "version": "3.5.1"
                 },
                 {
                     "ticker": "MSFT",
-                    "name": "Microsoft Corporation",
+                    "nameEn": "Microsoft Corporation",
+                    "nameJa": "Microsoft Corporation",
                     "version": "3.5.1"
                 },
                 {
                     "ticker": "BHLL",
-                    "name": "Bunker Hill Mining Corp.",
+                    "nameEn": "Bunker Hill Mining Corp.",
+                    "nameJa": "Bunker Hill Mining Corp.",
                     "version": "3.2.1"
                 },
                 {
                     "ticker": "MMM",
-                    "name": "3M Company",
+                    "nameEn": "3M Company",
+                    "nameJa": "3M Company",
                     "version": "1.11.3"
                 },
                 {
                     "ticker": "CVX",
-                    "name": "Chevron Corporation",
+                    "nameEn": "Chevron Corporation",
+                    "nameJa": "Chevron Corporation",
                     "version": "3.6.0"
                 }
             ]
@@ -58,12 +63,14 @@
             "companies": [
                 {
                     "ticker": "C",
-                    "name": "Citigroup",
+                    "nameEn": "Citigroup",
+                    "nameJa": "Citigroup",
                     "version": null
                 },
                 {
                     "ticker": "CVVUF",
-                    "name": "CanAlaska Uranium Ltd.",
+                    "nameEn": "CanAlaska Uranium Ltd.",
+                    "nameJa": "CanAlaska Uranium Ltd.",
                     "version": null
                 }
             ]
@@ -84,7 +91,8 @@
             "companies": [
                 {
                     "ticker": "MMM",
-                    "name": "3M Company",
+                    "nameEn": "3M Company",
+                    "nameJa": "3M Company",
                     "version": "1.4.4"
                 }
             ]

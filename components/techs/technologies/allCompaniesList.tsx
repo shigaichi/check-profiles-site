@@ -19,6 +19,7 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 type CompanyInfo = {
+  ticker: string
   name: string
   path: string
 }
@@ -59,7 +60,7 @@ const AllCompaniesList = (props: Props) => {
     return (
       <ListItem key="{company.slug}">
         <Link as={NextLink} href={company.path}>
-          {company.name}
+          {`${company.name} (${company.ticker})`}
         </Link>
       </ListItem>
     )
