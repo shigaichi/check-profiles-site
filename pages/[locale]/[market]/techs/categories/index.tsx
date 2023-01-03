@@ -8,6 +8,7 @@ import {
   UnorderedList,
 } from '@chakra-ui/react'
 import { Markets } from 'consts/markets'
+import jpTechs from 'data/jp/techs/techs.json'
 import usTechs from 'data/us/techs/techs.json'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -83,7 +84,7 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async (context: any) => {
   const techs =
-    context.params.market === Markets.US ? usTechs.techs : usTechs.techs
+    context.params.market === Markets.US ? usTechs.techs : jpTechs.techs
 
   const categories = Array.from(
     new Map(

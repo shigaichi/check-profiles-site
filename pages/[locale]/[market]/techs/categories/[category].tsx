@@ -7,8 +7,9 @@ import {
   ListItem,
   UnorderedList,
 } from '@chakra-ui/react'
-import { ALPHABETS } from 'consts/initials'
+import { ALPHABETS, NUMBERS } from 'consts/initials'
 import { Markets } from 'consts/markets'
+import jpTechs from 'data/jp/techs/techs.json'
 import usTechs from 'data/us/techs/techs.json'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -73,12 +74,13 @@ export const getStaticPaths = () => {
     paths: i18nextConfig.i18n.locales
       .map((lng) =>
         Object.values(Markets).map((market) => {
-          const techs = market === Markets.US ? usTechs.techs : usTechs.techs
+          const techs = market === Markets.US ? usTechs.techs : jpTechs.techs
 
           const categories = Array.from(
             new Map(
               techs
                 .map((tech) => tech.categories[0])
+                // unique categories
                 .map((category) => [category.id, category])
             ).values()
           ).sort((a, b) => a.id - b.id)
@@ -99,7 +101,7 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async (context: any) => {
   const techs =
-    context.params.market === Markets.US ? usTechs.techs : usTechs.techs
+    context.params.market === Markets.US ? usTechs.techs : jpTechs.techs
 
   const category = techs
     .map((tech) => tech.categories)
@@ -111,20 +113,25 @@ export const getStaticProps = async (context: any) => {
     throw new Error(`${context.params.category} is not found in techs.json`)
   }
 
+  const initials = context.params.market === Markets.US ? ALPHABETS : NUMBERS
   //TODO: check category slug is unique
   const techsOfCategory = techs
     .filter((tech) => tech?.categories[0].id === category.id)
     .map((tech) => {
-      const firstInitial = ALPHABETS.find((letter) =>
+      const firstInitial = initials.find((initial) =>
         techs
           .filter((tech) => tech.name === tech.name)
           .map((tech) => tech.companies)
           .flat()
           .some((company) => {
-            if (letter !== ALPHABETS[0]) {
-              return company.nameEn.toLowerCase().startsWith(letter)
+            if (context.params.market === Markets.US) {
+              if (initial !== ALPHABETS[0]) {
+                return company.nameEn.toLowerCase().startsWith(initial)
+              } else {
+                return !/^[A-Za-z]+/.test(company.nameEn)
+              }
             } else {
-              return !/^[A-Za-z]+/.test(company.nameEn)
+              return company.ticker.startsWith(initial)
             }
           })
       )
