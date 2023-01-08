@@ -1,11 +1,14 @@
 import {
+  Box,
   Card,
   CardBody,
   CardHeader,
+  Divider,
   Heading,
   Link,
   ListItem,
   UnorderedList,
+  VStack,
 } from '@chakra-ui/react'
 import { ALPHABETS, NUMBERS } from 'consts/initials'
 import { Markets } from 'consts/markets'
@@ -38,33 +41,34 @@ const Category: NextPage<Props> = (props) => {
     return (
       <ListItem key={tech.name}>
         <NextLink href={href} legacyBehavior passHref>
-          <Link>{tech.name}</Link>
+          <Link textDecoration={'underline'}>{tech.name}</Link>
         </NextLink>
       </ListItem>
     )
   })
 
   return (
-    <Card>
-      <CardHeader>
-        <Heading as="h2" size="md">
+    <VStack spacing="8" padding={4} align={'stretch'}>
+      <Box borderBottomColor={'black'} borderBottom="1px">
+        <Heading as="h1" size={'md'}>
           {t('categoryHeading', { val: props.category.name })}
         </Heading>
-      </CardHeader>
+      </Box>
 
-      <CardBody>
-        <Card>
-          <CardHeader>
-            <Heading as="h3" size="sm">
-              {t('categoriesAside')}
-            </Heading>
-          </CardHeader>
-          <CardBody>
-            <UnorderedList>{technologies}</UnorderedList>
-          </CardBody>
-        </Card>
-      </CardBody>
-    </Card>
+      <Card>
+        <CardHeader>
+          <Heading as="h2" size="md">
+            {t('categoriesAside')}
+          </Heading>
+        </CardHeader>
+
+        <Divider />
+
+        <CardBody>
+          <UnorderedList spacing={4}>{technologies}</UnorderedList>
+        </CardBody>
+      </Card>
+    </VStack>
   )
 }
 

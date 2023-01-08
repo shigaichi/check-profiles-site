@@ -58,8 +58,8 @@ const AllCompaniesList = (props: Props) => {
 
   const companyList = props.companies.map((company) => {
     return (
-      <ListItem key="{company.slug}">
-        <Link as={NextLink} href={company.path}>
+      <ListItem key={company.ticker}>
+        <Link textDecoration={'underline'} as={NextLink} href={company.path}>
           {`${company.name} (${company.ticker})`}
         </Link>
       </ListItem>
@@ -73,6 +73,8 @@ const AllCompaniesList = (props: Props) => {
           {t('allCompaniesList')}
         </Heading>
       </CardHeader>
+
+      <Divider />
 
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">

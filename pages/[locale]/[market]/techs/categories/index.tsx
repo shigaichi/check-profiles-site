@@ -1,11 +1,14 @@
 import {
+  Box,
   Card,
   CardBody,
   CardHeader,
+  Divider,
   Heading,
   Link,
   ListItem,
   UnorderedList,
+  VStack,
 } from '@chakra-ui/react'
 import { Markets } from 'consts/markets'
 import jpTechs from 'data/jp/techs/techs.json'
@@ -36,33 +39,33 @@ const Categories: NextPage<Props> = (props) => {
     return (
       <ListItem key={category.name}>
         <NextLink href={href} legacyBehavior passHref>
-          <Link>{category.name}</Link>
+          <Link textDecoration={'underline'}>{category.name}</Link>
         </NextLink>
       </ListItem>
     )
   })
 
   return (
-    <Card>
-      <CardHeader>
-        <Heading as="h2" size="md">
+    <VStack spacing="8" padding={4} align={'stretch'}>
+      <Box borderBottomColor={'black'} borderBottom="1px">
+        <Heading as="h1" size={'md'}>
           {t('categoriesHeading')}
         </Heading>
-      </CardHeader>
+      </Box>
+      <Card>
+        <CardHeader>
+          <Heading as="h2" size="md">
+            {t('categoriesAside')}
+          </Heading>
+        </CardHeader>
 
-      <CardBody>
-        <Card>
-          <CardHeader>
-            <Heading as="h3" size="sm">
-              {t('categoriesAside')}
-            </Heading>
-          </CardHeader>
-          <CardBody>
-            <UnorderedList>{technologies}</UnorderedList>
-          </CardBody>
-        </Card>
-      </CardBody>
-    </Card>
+        <Divider />
+
+        <CardBody>
+          <UnorderedList spacing={2}>{technologies}</UnorderedList>
+        </CardBody>
+      </Card>
+    </VStack>
   )
 }
 

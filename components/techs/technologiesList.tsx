@@ -2,14 +2,12 @@ import {
   Card,
   CardBody,
   CardHeader,
+  Divider,
   Heading,
   Link,
   List,
   ListItem,
-  Stack,
-  StackDivider,
-  Text,
-  VStack,
+  UnorderedList,
 } from '@chakra-ui/react'
 import { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -52,48 +50,34 @@ const TechnologiesList: NextPage<Props> = (props) => {
       return (
         <ListItem key={technology.name}>
           <NextLink href={href} legacyBehavior passHref>
-            <Link>{technology.name}</Link>
+            <Link textDecoration={'underline'}>{technology.name}</Link>
           </NextLink>
         </ListItem>
       )
     })
 
     return (
-      <VStack key={category.id} align={'start'}>
-        <Heading as="h3" size="xs" textTransform="uppercase">
+      <ListItem key={category.id}>
+        <Heading as="h3" size="xs" marginBottom={2}>
           {category.name}
         </Heading>
-        <List spacing={2}>{technologies}</List>
-      </VStack>
+        <UnorderedList spacing={2}>{technologies}</UnorderedList>
+      </ListItem>
     )
   })
-
-  const toCategoryHref = {
-    pathname: router.pathname + '/categories',
-    query: {
-      locale: router.query.locale,
-      market: router.query.market,
-    },
-  }
 
   return (
     <Card>
       <CardHeader>
-        <VStack align={'start'}>
-          <Heading as="h2" size="md">
-            {t('technologiesHeading')}
-          </Heading>
-          <Text>{t('featuredTechnologiesAside')}</Text>
-          <NextLink href={toCategoryHref} legacyBehavior passHref>
-            <Link>{t('techsToCategoriesLink')}</Link>
-          </NextLink>
-        </VStack>
+        <Heading as="h2" size="md">
+          {t('technologiesHeading')}
+        </Heading>
       </CardHeader>
 
+      <Divider />
+
       <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          {categories}
-        </Stack>
+        <List spacing={4}>{categories}</List>
       </CardBody>
     </Card>
   )

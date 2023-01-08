@@ -1,4 +1,4 @@
-import { Box, Container } from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
 import React from 'react'
 import MainHeader from './mainHeader'
 
@@ -9,11 +9,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
       <MainHeader />
-      <main>
-        <Container maxW="max" centerContent>
-          <Box>{children}</Box>
-        </Container>
-      </main>
+      <Container as={'main'} minW={{ lg: '1024px' }}>
+        {children}
+      </Container>
     </>
   )
 }

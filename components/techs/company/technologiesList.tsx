@@ -66,7 +66,7 @@ const TechnologiesList: NextPage<Props> = (props) => {
     <Card>
       <CardHeader>
         <Heading as="h2" size="md">
-          {t('technologiesHeading')}
+          {t('technologiesListOfCompanyHeading')}
         </Heading>
       </CardHeader>
 

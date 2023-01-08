@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardBody,
   Divider,
@@ -26,9 +27,11 @@ const Technology: NextPage<Props> = (props) => {
   //TODO: version
   return (
     <VStack align={'stretch'} spacing={8} padding={4}>
-      <Heading as="h1" size="lg">
-        {t('technologyUsingCompany', { val: props.technologyName })}
-      </Heading>
+      <Box borderBottomColor={'black'} borderBottom="1px">
+        <Heading as="h1" size="md">
+          {t('technologyUsingCompany', { val: props.technologyName })}
+        </Heading>
+      </Box>
       <Card>
         <CardBody>
           <UnorderedList>

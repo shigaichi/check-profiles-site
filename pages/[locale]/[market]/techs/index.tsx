@@ -1,5 +1,14 @@
-import { Card, CardBody, CardHeader, Heading } from '@chakra-ui/react'
-import AsideInfo from 'components/common/asideInfo'
+import {
+  Box,
+  Card,
+  CardBody,
+  Heading,
+  Link,
+  ListItem,
+  Text,
+  UnorderedList,
+  VStack,
+} from '@chakra-ui/react'
 import TechnologiesList from 'components/techs/technologiesList'
 import { ALPHABETS, NUMBERS } from 'consts/initials'
 import { Markets } from 'consts/markets'
@@ -8,34 +17,68 @@ import jpTechs from 'data/jp/techs/techs.json'
 import usFeaturedTechs from 'data/us/techs/featuredTechs.json'
 import usTechs from 'data/us/techs/techs.json'
 import { InferGetStaticPropsType, NextPage } from 'next'
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import NextLink, { LinkProps } from 'next/link'
+import { useRouter } from 'next/router'
+import React from 'react'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Techs: NextPage<Props> = (props) => {
   const { t } = useTranslation('techs')
+  const router = useRouter()
+
+  const toCategoryHref = {
+    pathname: router.pathname + '/categories',
+    query: {
+      locale: router.query.locale,
+      market: router.query.market,
+    },
+  }
 
   return (
-    <Card>
-      <CardHeader>
-        <Heading as="h2" size="md">
+    <VStack spacing="8" padding={4} align={'stretch'}>
+      <Box borderBottomColor={'black'} borderBottom="1px">
+        <Heading as="h1" size={'md'}>
           {t('techsHeading')}
         </Heading>
-      </CardHeader>
-
-      <CardBody>
-        <TechnologiesList categories={props.categories} />
-      </CardBody>
-
-      <CardBody>
-        <AsideInfo />
-      </CardBody>
-    </Card>
+      </Box>
+      <Card>
+        <CardBody>
+          <UnorderedList>
+            <ListItem>
+              <Text>{t('featuredTechnologiesAside')}</Text>
+            </ListItem>
+            <ListItem>
+              <Trans
+                ns="techs"
+                i18nKey="techsToCategoriesLink"
+                components={{
+                  l: <LinkForTrans href={toCategoryHref} />,
+                }}
+              />
+            </ListItem>
+          </UnorderedList>
+        </CardBody>
+      </Card>
+      <TechnologiesList categories={props.categories} />
+    </VStack>
   )
 }
 
+export const LinkForTrans = ({
+  href,
+  children,
+}: React.PropsWithChildren<LinkProps>) => {
+  // https://github.com/i18next/react-i18next/issues/1090#issuecomment-1215615932
+  return (
+    <NextLink href={href} legacyBehavior passHref>
+      <Link textDecoration={'underline'}>{children}</Link>
+    </NextLink>
+  )
+}
 export default Techs
 
 export const getStaticPaths = () => ({

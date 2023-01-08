@@ -1,4 +1,4 @@
-import { Divider, Heading, VStack } from '@chakra-ui/react'
+import { Box, Divider, Heading, VStack } from '@chakra-ui/react'
 import AsideInfo from 'components/common/asideInfo'
 import CompanyInfo from 'components/techs/company/companyInfo'
 import TechnologiesList from 'components/techs/company/technologiesList'
@@ -23,9 +23,11 @@ const Code: NextPage<Props> = (props) => {
 
   return (
     <VStack align={'stretch'} spacing={8} padding={4}>
-      <Heading as="h1" size="lg">
-        {props.name}
-      </Heading>
+      <Box borderBottomColor={'black'} borderBottom="1px">
+        <Heading as="h1" size="md">
+          {props.name}
+        </Heading>
+      </Box>
       <CompanyInfo
         companyCode={props.code}
         companyName={props.name}
