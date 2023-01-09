@@ -1,5 +1,6 @@
 {
-    "techsHeading": "Web technologies used by listed companies",
+    "techsHeadingOfUs": "Web technologies used by listed companies in U.S.",
+    "techsHeadingOfJp": "Web technologies used by listed companies in Japan",
     "categoriesHeading": "List of Technology Categories",
     "categoriesAside": "List of technologies in this category",
     "categoryHeading": "List of Technology in the {{val}} category",
@@ -8,6 +9,7 @@
     "technologiesHeading": "List of major technologies",
     "featuredTechnologiesAside": "List of major technologies in the whole.",
     "techsToCategoriesLink": "<l>Click here</l> to see all technologies detected (by category)",
+    "companyHeading": "List of technologies used in {{val}}",
     "infoHeading": "Supplementary information",
     "technologiesListOfCompanyHeading": "List of technologies used in the company",
     "market": "Listed market",
@@ -18,8 +20,11 @@
     "targetAside": "The survey targets corporate websites.",
     "periodAside": "The technology used on the website is checked at least once a month.",
     "siteAside": "Corporate sites are basically a page for investors, etc. May not be a site for general consumer",
+    "universeAside": "Some companies were unable to get information due to network errors or other reasons.",
+    "companyNumberAside": "Therefore, the total number of companies surveyed differs from the total number of listed companies.",
     "fundsAside": "The survey targets includes funds, etc.",
     "multipleAside": "Multiple corporate sites may exist on the same domain, mainly funds.",
+    "wapAside": "The technology used on each company's site is obtained using <l>Wappalyzer</l>. This site uses information from <l>Wappalyzer</l>.",
     "allCompaniesList": "List of Companies",
     "next": "Next",
     "prev": "Prev"

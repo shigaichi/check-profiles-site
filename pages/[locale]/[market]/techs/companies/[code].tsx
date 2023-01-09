@@ -8,13 +8,17 @@ import usCompanies from 'data/us/techs/companies.json'
 import { parse } from 'date-fns'
 import fs from 'fs'
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
+import { useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import path from 'path'
+import WapInfo from 'components/common/wapInfo'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Code: NextPage<Props> = (props) => {
+  const { t } = useTranslation('techs')
+
   const lastCheckedAt = parse(
     props.lastCheckedAt,
     'yyyy-MM-dd hh:mm:ss.SSSSSS',
@@ -25,7 +29,7 @@ const Code: NextPage<Props> = (props) => {
     <VStack align={'stretch'} spacing={8} padding={4}>
       <Box borderBottomColor={'black'} borderBottom="1px">
         <Heading as="h1" size="md">
-          {props.name}
+          {t('companyHeading', { val: props.name })}
         </Heading>
       </Box>
       <CompanyInfo
@@ -38,6 +42,7 @@ const Code: NextPage<Props> = (props) => {
       <TechnologiesList categories={props.categories} />
       <Divider />
       <AsideInfo />
+      <WapInfo />
     </VStack>
   )
 }

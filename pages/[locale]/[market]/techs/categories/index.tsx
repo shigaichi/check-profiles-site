@@ -10,6 +10,8 @@ import {
   UnorderedList,
   VStack,
 } from '@chakra-ui/react'
+import AsideInfo from 'components/common/asideInfo'
+import WapInfo from 'components/common/wapInfo'
 import { Markets } from 'consts/markets'
 import jpTechs from 'data/jp/techs/techs.json'
 import usTechs from 'data/us/techs/techs.json'
@@ -65,6 +67,9 @@ const Categories: NextPage<Props> = (props) => {
           <UnorderedList spacing={2}>{technologies}</UnorderedList>
         </CardBody>
       </Card>
+      <Divider />
+      <AsideInfo />
+      <WapInfo />
     </VStack>
   )
 }

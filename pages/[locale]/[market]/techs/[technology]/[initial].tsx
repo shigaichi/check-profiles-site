@@ -9,6 +9,7 @@ import {
   VStack,
 } from '@chakra-ui/react'
 import AsideInfo from 'components/common/asideInfo'
+import WapInfo from 'components/common/wapInfo'
 import AllCompaniesList from 'components/techs/technologies/allCompaniesList'
 import { ALPHABETS, NUMBERS } from 'consts/initials'
 import { Markets } from 'consts/markets'
@@ -58,6 +59,7 @@ const Technology: NextPage<Props> = (props) => {
       <Divider />
 
       <AsideInfo />
+      <WapInfo />
     </VStack>
   )
 }

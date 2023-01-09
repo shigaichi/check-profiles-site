@@ -2,6 +2,7 @@ import {
   Box,
   Card,
   CardBody,
+  Divider,
   Heading,
   Link,
   ListItem,
@@ -9,6 +10,8 @@ import {
   UnorderedList,
   VStack,
 } from '@chakra-ui/react'
+import AsideInfo from 'components/common/asideInfo'
+import WapInfo from 'components/common/wapInfo'
 import TechnologiesList from 'components/techs/technologiesList'
 import { ALPHABETS, NUMBERS } from 'consts/initials'
 import { Markets } from 'consts/markets'
@@ -42,7 +45,9 @@ const Techs: NextPage<Props> = (props) => {
     <VStack spacing="8" padding={4} align={'stretch'}>
       <Box borderBottomColor={'black'} borderBottom="1px">
         <Heading as="h1" size={'md'}>
-          {t('techsHeading')}
+          {router.query.market === Markets.US
+            ? t('techsHeadingOfUs')
+            : t('techsHeadingOfJp')}
         </Heading>
       </Box>
       <Card>
@@ -64,6 +69,9 @@ const Techs: NextPage<Props> = (props) => {
         </CardBody>
       </Card>
       <TechnologiesList categories={props.categories} />
+      <Divider />
+      <AsideInfo />
+      <WapInfo />
     </VStack>
   )
 }
