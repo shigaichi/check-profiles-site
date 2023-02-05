@@ -1,5 +1,6 @@
 import { Box, Divider, Heading, VStack } from '@chakra-ui/react'
 import AsideInfo from 'components/common/asideInfo'
+import WapInfo from 'components/common/wapInfo'
 import CompanyInfo from 'components/techs/company/companyInfo'
 import TechnologiesList from 'components/techs/company/technologiesList'
 import { Markets } from 'consts/markets'
@@ -12,7 +13,6 @@ import { useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import path from 'path'
-import WapInfo from 'components/common/wapInfo'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 

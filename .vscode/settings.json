@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
-        "chakra"
+        "chakra",
+        "consts",
+        "markuplint"
     ],
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#ab307e",
