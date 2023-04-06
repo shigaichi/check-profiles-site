@@ -4,8 +4,6 @@ import WapInfo from 'components/common/wapInfo'
 import CompanyInfo from 'components/techs/company/companyInfo'
 import TechnologiesList from 'components/techs/company/technologiesList'
 import { Markets } from 'consts/markets'
-import jaCompanies from 'data/jp/techs/companies.json'
-import usCompanies from 'data/us/techs/companies.json'
 import { parse } from 'date-fns'
 import fs from 'fs'
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
@@ -50,19 +48,25 @@ const Code: NextPage<Props> = (props) => {
 export default Code
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const us = i18nextConfig.i18n.locales
+  const paths = i18nextConfig.i18n.locales
     .map((lng) =>
       Object.values(Markets).map((market) =>
-        (market === Markets.US
-          ? usCompanies.companies
-          : jaCompanies.companies
-        ).map((company) => ({
-          params: {
-            locale: lng,
-            code: company.toLowerCase(),
-            market: market,
-          },
-        }))
+        fs
+          .readdirSync(`data/${market}/techs/companies/`)
+          .map((fileName) =>
+            path.join(`data/${market}/techs/companies/`, fileName)
+          )
+          .map(
+            (filePath) =>
+              JSON.parse(fs.readFileSync(filePath, 'utf-8')).code as string
+          )
+          .map((code) => ({
+            params: {
+              locale: lng,
+              code: code.toLowerCase(),
+              market: market,
+            },
+          }))
       )
     )
     .flat()
@@ -70,7 +74,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 
   return {
     fallback: false,
-    paths: us,
+    paths: paths,
   }
 }
 
