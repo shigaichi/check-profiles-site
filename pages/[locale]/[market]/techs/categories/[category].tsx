@@ -12,10 +12,11 @@ import {
 } from '@chakra-ui/react'
 import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
-import { ALPHABETS, NUMBERS } from 'consts/initials'
 import { Markets } from 'consts/markets'
-import jpTechs from 'data/jp/techs/techs.json'
-import usTechs from 'data/us/techs/techs.json'
+import { getCompanies } from 'features/company/file/getCompanies'
+import { getUsedInitials } from 'features/company/getUsedInitials'
+import { getAllCategories } from 'features/tech/getCategory'
+import { getTechsAndUsingCompanies } from 'features/tech/getTechs'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
@@ -83,18 +84,7 @@ export const getStaticPaths = () => {
     paths: i18nextConfig.i18n.locales
       .map((lng) =>
         Object.values(Markets).map((market) => {
-          const techs = market === Markets.US ? usTechs.techs : jpTechs.techs
-
-          const categories = Array.from(
-            new Map(
-              techs
-                .map((tech) => tech.categories[0])
-                // unique categories
-                .map((category) => [category.id, category])
-            ).values()
-          ).sort((a, b) => a.id - b.id)
-
-          return categories.map((category) => ({
+          return getAllCategories(market).map((category) => ({
             params: {
               locale: lng,
               market: market,
@@ -109,49 +99,37 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async (context: any) => {
-  const techs =
-    context.params.market === Markets.US ? usTechs.techs : jpTechs.techs
+  const techsAndUsingCompanies = getTechsAndUsingCompanies(
+    getCompanies(context.params.market)
+  )
 
-  const category = techs
-    .map((tech) => tech.categories)
-    .flat()
-    .find((category) => category.slug === context.params.category)
+  // get category from all categories by slug
+  const category = getAllCategories(context.params.market).find(
+    (it) => it.slug === context.params.category
+  )
 
   if (!category) {
     // Basically does not occur
-    throw new Error(`${context.params.category} is not found in techs.json`)
+    throw new Error(`${context.params.category} is not found`)
   }
 
-  const initials = context.params.market === Markets.US ? ALPHABETS : NUMBERS
   //TODO: check category slug is unique
-  const techsOfCategory = techs
-    .filter((tech) => tech?.categories[0].id === category.id)
-    .map((tech) => {
-      const firstInitial = initials.find((initial) =>
-        techs
-          .filter((tech) => tech.name === tech.name)
-          .map((tech) => tech.companies)
-          .flat()
-          .some((company) => {
-            if (context.params.market === Markets.US) {
-              if (initial !== ALPHABETS[0]) {
-                return company.nameEn.toLowerCase().startsWith(initial)
-              } else {
-                return !/^[A-Za-z]+/.test(company.nameEn)
-              }
-            } else {
-              return company.ticker.startsWith(initial)
-            }
-          })
-      )
+  const techsOfCategory = category.technologies.map((tech) => {
+    const allCompanyUsingTech = techsAndUsingCompanies.find(
+      (it) => it.tech.name === tech.name
+    )
 
-      if (firstInitial === undefined) {
-        // Basically does not occur
-        throw new Error(`can not find companies using ${tech.name}`)
-      }
+    if (allCompanyUsingTech == null) {
+      // Basically does not occur
+      throw new Error(`${tech.name} is not used in all companies`)
+    }
 
-      return { name: tech.name, slug: tech.slug, firstInitial: firstInitial }
-    })
+    const firstInitial = getUsedInitials(
+      allCompanyUsingTech.companies,
+      context.params.market
+    )[0]
+    return { name: tech.name, slug: tech.slug, firstInitial }
+  })
 
   return {
     props: {

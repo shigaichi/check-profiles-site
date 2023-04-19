@@ -13,12 +13,13 @@ import {
 import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
 import TechnologiesList from 'components/techs/technologiesList'
-import { ALPHABETS, NUMBERS } from 'consts/initials'
 import { Markets } from 'consts/markets'
 import jpFeaturedTechs from 'data/jp/techs/featuredTechs.json'
-import jpTechs from 'data/jp/techs/techs.json'
 import usFeaturedTechs from 'data/us/techs/featuredTechs.json'
-import usTechs from 'data/us/techs/techs.json'
+import { getCompanies } from 'features/company/file/getCompanies'
+import { getCategory } from 'features/tech/getCategory'
+import { getTechsAndUsingCompanies } from 'features/tech/getTechs'
+import { Category } from 'features/tech/Techs'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { Trans, useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
@@ -68,7 +69,10 @@ const Techs: NextPage<Props> = (props) => {
           </UnorderedList>
         </CardBody>
       </Card>
-      <TechnologiesList categories={props.categories} />
+      <TechnologiesList
+        categories={props.categories}
+        allCompanies={props.companies}
+      />
       <Divider />
       <AsideInfo />
       <WapInfo />
@@ -103,27 +107,15 @@ export const getStaticPaths = () => ({
     .flat(),
 })
 
-type Category = {
-  id: number
-  name: string
-  technologies: Technology[]
-}
-
-type Technology = {
-  name: string
-  slug: string
-  firstInitial: string
-}
-
 export const getStaticProps = async (context: any) => {
   //TODO: check slug can be null
-  const techs = (context.params.market === Markets.US ? usTechs : jpTechs).techs
-  const initials = context.params.market === Markets.US ? ALPHABETS : NUMBERS
+  const allCompanies = getCompanies(context.params.market)
+  const allTechs = getTechsAndUsingCompanies(allCompanies).map((it) => it.tech)
 
   const featuredTechsFromJson = (
     context.params.market === Markets.US ? usFeaturedTechs : jpFeaturedTechs
   ).featuredTechs.map((featuredTech) => {
-    const featuredTechFromJson = techs.find(
+    const featuredTechFromJson = allTechs.find(
       (tech) => tech.name === featuredTech
     )
 
@@ -133,63 +125,36 @@ export const getStaticProps = async (context: any) => {
       )
     }
 
-    return {
-      name: featuredTech,
-      slug: featuredTechFromJson.slug,
-      category: featuredTechFromJson.categories[0],
-    }
+    return featuredTechFromJson
   })
 
-  const categoryNames = Array.from(
-    new Map(
-      featuredTechsFromJson
-        .map((tech) => tech.category)
-        .map((category) => [category.id, category])
-    ).values()
+  // get categories by techs
+  const categories = featuredTechsFromJson.flatMap((tech) =>
+    getCategory(tech).flatMap((category) => {
+      // push only one tech in the category (category had all techs belongs to it)
+      category.technologies = [tech]
+      return category
+    })
   )
 
-  const categories: Category[] = categoryNames.map((category) => ({
-    id: category.id,
-    name: category.name,
-    technologies: featuredTechsFromJson
-      // Find the initial to be linked from featuredTech
-      .filter((tech) => tech?.category.name === category.name)
-      .map((featuredTech) => {
-        const firstInitial = initials.find((letter) =>
-          techs
-            .filter((tech) => tech.name === featuredTech.name)
-            // List companies using featuredTech
-            .map((tech) => tech.companies)
-            .flat()
-            .some((company) => {
-              if (context.params.market === Markets.US) {
-                if (letter !== ALPHABETS[0]) {
-                  return company.nameEn.toLowerCase().startsWith(letter)
-                } else {
-                  return !/^[A-Za-z]+/.test(company.nameEn)
-                }
-              } else {
-                return company.ticker.startsWith(letter)
-              }
-            })
-        )
-
-        if (firstInitial === undefined) {
-          // Basically does not occur
-          throw new Error(`can not find companies using ${featuredTech.name}`)
-        }
-
-        return {
-          name: featuredTech.name,
-          slug: featuredTech.slug,
-          firstInitial: firstInitial,
-        }
-      }),
-  }))
+  // merge technologies in categories
+  const mergedCategories = categories.reduce((acc, category) => {
+    const foundCategory = acc.find((it) => it.id === category.id)
+    if (foundCategory === undefined) {
+      acc.push(category)
+    } else {
+      // merge technologies in foundCategory and tecnologies in category and delete duplicated
+      foundCategory.technologies = Array.from(
+        new Set(foundCategory.technologies.concat(category.technologies))
+      )
+    }
+    return acc
+  }, Array<Category>())
 
   return {
     props: {
-      categories: categories,
+      categories: mergedCategories,
+      companies: allCompanies,
       ...(await serverSideTranslations(context.params.locale, [
         'top',
         'techs',

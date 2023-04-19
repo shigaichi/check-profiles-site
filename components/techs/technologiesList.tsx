@@ -9,25 +9,19 @@ import {
   ListItem,
   UnorderedList,
 } from '@chakra-ui/react'
+import { toMarket } from 'consts/markets'
+import { Company } from 'features/company/Company'
+import { getUsedInitials } from 'features/company/getUsedInitials'
+import { getCompanyUsingTech } from 'features/tech/getTechs'
+import { Category } from 'features/tech/Techs'
 import { NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
-type Category = {
-  id: number
-  name: string
-  technologies: Technology[]
-}
-
-type Technology = {
-  name: string
-  slug: string
-  firstInitial: string
-}
-
 type Props = {
   categories: Category[]
+  allCompanies: Company[]
 }
 
 const TechnologiesList: NextPage<Props> = (props) => {
@@ -37,13 +31,22 @@ const TechnologiesList: NextPage<Props> = (props) => {
   const categories = props.categories.map((category) => {
     // TODO: use tech icons from wap
     const technologies = category.technologies.map((technology) => {
+      const companyUsingTech = getCompanyUsingTech(
+        technology,
+        props.allCompanies
+      )
+      const initial = getUsedInitials(
+        companyUsingTech,
+        toMarket(router.query.market as string)
+      )[0]
+
       const href = {
         pathname: `${router.pathname}/[technology]/[initial]`,
         query: {
           locale: router.query.locale,
           market: router.query.market,
           technology: technology.slug,
-          initial: technology.firstInitial,
+          initial: initial,
         },
       }
 

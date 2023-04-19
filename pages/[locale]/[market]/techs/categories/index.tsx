@@ -13,8 +13,7 @@ import {
 import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
 import { Markets } from 'consts/markets'
-import jpTechs from 'data/jp/techs/techs.json'
-import usTechs from 'data/us/techs/techs.json'
+import { getAllCategories } from 'features/tech/getCategory'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
@@ -91,16 +90,7 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async (context: any) => {
-  const techs =
-    context.params.market === Markets.US ? usTechs.techs : jpTechs.techs
-
-  const categories = Array.from(
-    new Map(
-      techs
-        .map((tech) => tech.categories[0])
-        .map((category) => [category.id, category])
-    ).values()
-  ).sort((a, b) => a.id - b.id)
+  const categories = getAllCategories(context.params.market)
 
   return {
     props: {
