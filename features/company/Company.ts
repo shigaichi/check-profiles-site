@@ -4,20 +4,21 @@ export type Company = {
   code: string
   nameJa: string
   nameEn: string
-  marketJa: string
-  marketEn: string
+  marketJa: string[]
+  marketEn: string[]
   lastCheckedAt: string
   urls: Url[]
   categories: Category[]
 }
 
 export type Url = {
-  [key: string]: Status
-}
-
-export type Status = {
+  url: string
   status: number
 }
+
+// export type Status = {
+//   status: number
+// }
 
 // export type Category = {
 //   id: number

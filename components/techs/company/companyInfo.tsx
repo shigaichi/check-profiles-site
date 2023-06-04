@@ -16,7 +16,8 @@ type CompanyInfoProps = {
   companyCode: string
   companyName: string
   link: string
-  market: string
+  // TODO: check how to display array of strings
+  market: string[]
   lastChecked: Date
 }
 

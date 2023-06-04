@@ -23,7 +23,7 @@ type Category = {
 
 type Technology = {
   name: string
-  version: string
+  version?: string
   website: string
 }
 
@@ -41,7 +41,7 @@ const TechnologiesList: NextPage<Props> = (props) => {
         <ListItem key={j}>
           <Link href={technology.website} isExternal={true}>
             {technology.name}
-            {technology.version?.length > 0 && (
+            {technology.version != null && technology.version.length > 0 && (
               <Tag size={'sm'} marginLeft={1} marginTop={1}>
                 {technology.version}
               </Tag>

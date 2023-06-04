@@ -4,7 +4,8 @@ import WapInfo from 'components/common/wapInfo'
 import CompanyInfo from 'components/techs/company/companyInfo'
 import TechnologiesList from 'components/techs/company/technologiesList'
 import { Markets } from 'consts/markets'
-import { parse } from 'date-fns'
+import { parseISO } from 'date-fns'
+import { Company } from 'features/company/Company'
 import fs from 'fs'
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -17,11 +18,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 const Code: NextPage<Props> = (props) => {
   const { t } = useTranslation('techs')
 
-  const lastCheckedAt = parse(
-    props.lastCheckedAt,
-    'yyyy-MM-dd hh:mm:ss.SSSSSS',
-    new Date()
-  )
+  const lastCheckedAt = parseISO(props.lastCheckedAt)
 
   return (
     <VStack align={'stretch'} spacing={8} padding={4}>
@@ -87,11 +84,20 @@ export const getStaticProps = async (context: any) => {
       ),
       'utf-8'
     )
-  )
+  ) as Company
 
   // The order of keys in JSON is not guaranteed.
   // So, it must be aligned on the server side.
-  const lastUrl = Object.keys(json.urls).pop()!!
+  // TODO: check json batch
+  const lastUrl = json.urls[json.urls.length - 1].url
+
+  // const lastCheckedAt = parseISO(json.lastCheckedAt)
+  // const isInvalidDate = Number.isNaN(lastCheckedAt.getTime())
+  // if (isInvalidDate) {
+  //   throw new Error(
+  //     `Invalid Date. code: ${json.code} lastCheckedAt: ${json.lastCheckedAt}`
+  //   )
+  // }
 
   return {
     props: {
