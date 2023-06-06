@@ -3,17 +3,14 @@ import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
 import CompanyInfo from 'components/techs/company/companyInfo'
 import TechnologiesList from 'components/techs/company/technologiesList'
-import { Markets } from 'consts/markets'
 import { parseISO } from 'date-fns'
 import { Company } from 'features/company/Company'
-import fs from 'fs'
-import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
-import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import path from 'path'
+import { assertIsDefined } from 'lib/assert'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const Code: NextPage<Props> = (props) => {
   const { t } = useTranslation('techs')
@@ -44,73 +41,42 @@ const Code: NextPage<Props> = (props) => {
 
 export default Code
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const paths = i18nextConfig.i18n.locales
-    .map((lng) =>
-      Object.values(Markets).map((market) =>
-        fs
-          .readdirSync(`data/${market}/techs/companies/`)
-          .map((fileName) =>
-            path.join(`data/${market}/techs/companies/`, fileName)
-          )
-          .map(
-            (filePath) =>
-              JSON.parse(fs.readFileSync(filePath, 'utf-8')).code as string
-          )
-          .map((code) => ({
-            params: {
-              locale: lng,
-              code: code.toLowerCase(),
-              market: market,
-            },
-          }))
-      )
-    )
-    .flat()
-    .flat()
-
-  return {
-    fallback: false,
-    paths: paths,
-  }
+type Params = {
+  locale: string
+  market: string
+  code: string
 }
 
-export const getStaticProps = async (context: any) => {
-  const json = JSON.parse(
-    fs.readFileSync(
-      path.resolve(
-        process.cwd(),
-        `data/${context.params.market}/techs/companies/${context.params.code}.json`
-      ),
-      'utf-8'
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const params = context.params as Params
+  const url = process.env.API_BASE_URL
+  assertIsDefined(url)
+
+  const res = await fetch(
+    `${url}/${params.market}/techs/companies/${params.code}.json`
+  )
+  if (!res.ok) {
+    throw new Error(
+      `Failed to fetch: ${url}/${params.market}/techs/companies/${params.code}.json`
     )
-  ) as Company
+  }
+
+  const repo = (await res.json()) as Company
 
   // The order of keys in JSON is not guaranteed.
   // So, it must be aligned on the server side.
   // TODO: check json batch
-  const lastUrl = json.urls[json.urls.length - 1].url
-
-  // const lastCheckedAt = parseISO(json.lastCheckedAt)
-  // const isInvalidDate = Number.isNaN(lastCheckedAt.getTime())
-  // if (isInvalidDate) {
-  //   throw new Error(
-  //     `Invalid Date. code: ${json.code} lastCheckedAt: ${json.lastCheckedAt}`
-  //   )
-  // }
+  const lastUrl = repo.urls[repo.urls.length - 1].url
 
   return {
     props: {
-      code: json.code,
-      name: context.params.locale === 'en' ? json.nameEn : json.nameJa,
-      market: context.params.locale === 'en' ? json.marketEn : json.marketJa,
-      lastCheckedAt: json.lastCheckedAt,
+      code: params.code,
+      name: params.locale === 'en' ? repo.nameEn : repo.nameJa,
+      market: params.locale === 'en' ? repo.marketEn : repo.marketJa,
+      lastCheckedAt: repo.lastCheckedAt,
       url: lastUrl,
-      categories: json.categories,
-      ...(await serverSideTranslations(context.params.locale, [
-        'top',
-        'techs',
-      ])),
+      categories: repo.categories,
+      ...(await serverSideTranslations(params.locale, ['top', 'techs'])),
     },
   }
 }
