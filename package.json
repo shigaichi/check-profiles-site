@@ -40,6 +40,7 @@
   "devDependencies": {
     "@markuplint/jsx-parser": "^3.2.0",
     "@markuplint/react-spec": "^3.2.0",
+    "@netlify/plugin-nextjs": "^4.37.4",
     "http-server": "^14.1.1",
     "markuplint": "^3.2.0",
     "next-sitemap": "^3.1.43",

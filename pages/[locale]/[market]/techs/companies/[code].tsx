@@ -5,10 +5,10 @@ import CompanyInfo from 'components/techs/company/companyInfo'
 import TechnologiesList from 'components/techs/company/technologiesList'
 import { parseISO } from 'date-fns'
 import { Company } from 'features/company/Company'
+import { assertIsDefined } from 'lib/assert'
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { assertIsDefined } from 'lib/assert'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
