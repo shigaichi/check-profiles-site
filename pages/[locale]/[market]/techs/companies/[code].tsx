@@ -55,10 +55,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(
     `${url}/${params.market}/techs/companies/${params.code}.json`
   )
-  if (!res.ok) {
-    throw new Error(
-      `Failed to fetch: ${url}/${params.market}/techs/companies/${params.code}.json`
-    )
+
+  if (res.status == 404) {
+    console.error(`Not found. url: ${url}`)
+    context.res.statusCode = 404
+    return {
+      notFound: true,
+    }
+  } else if (!res.ok) {
+    console.error(`Failed to fetch. status: ${res.status} url: ${url}`)
+    context.res.statusCode = 500
+    throw new Error(`Failed to fetch. status: ${res.status} url: ${url}`)
   }
 
   const repo = (await res.json()) as Company

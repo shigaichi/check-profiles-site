@@ -11,30 +11,27 @@ import {
 import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
 import AllCompaniesList from 'components/techs/technologies/allCompaniesList'
-import { ALPHABETS, NUMBERS } from 'consts/initials'
-import { Markets } from 'consts/markets'
-import { getCompanies } from 'features/company/file/getCompanies'
-import {
-  getUsedAlphabets,
-  getUsedNumbers,
-} from 'features/company/getUsedInitials'
-import { getTechsAndUsingCompanies } from 'features/tech/getTechs'
-import { GetStaticPaths, InferGetStaticPropsType, NextPage } from 'next'
+import { CompaniesUsingTechWithInitial } from 'features/tech/CompaniesUsingTechWithInitial'
+import { assertIsDefined } from 'lib/assert'
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
-import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const Technology: NextPage<Props> = (props) => {
   const { t } = useTranslation(['techs'])
+  const router = useRouter()
+
+  const companies = props.companies as CompaniesUsingTechWithInitial
 
   //TODO: version
   return (
     <VStack align={'stretch'} spacing={8} padding={4}>
       <Box borderBottomColor={'black'} borderBottom="1px">
         <Heading as="h1" size="md">
-          {t('technologyUsingCompany', { val: props.technologyName })}
+          {t('technologyUsingCompany', { val: companies.techName })}
         </Heading>
       </Box>
       <Card>
@@ -42,9 +39,9 @@ const Technology: NextPage<Props> = (props) => {
           <UnorderedList>
             <ListItem>
               {t('companyNumber', {
-                usingCompanyNumber: props.usingCompanyNumber,
-                totalNumber: props.totalNumber,
-                technologyName: props.technologyName,
+                usingCompanyNumber: companies.usingCompaniesNumber,
+                totalNumber: companies.totalCompaniesNumber,
+                technologyName: companies.techName,
               })}
             </ListItem>
           </UnorderedList>
@@ -52,11 +49,16 @@ const Technology: NextPage<Props> = (props) => {
       </Card>
 
       <AllCompaniesList
-        filteredInitials={props.filteredInitials}
-        companies={props.companies.map((it) => ({
-          ticker: it.ticker,
-          name: it.name,
-          path: it.path,
+        filteredInitials={companies.otherInitials}
+        companies={companies.usingCompanies.map((company) => ({
+          name:
+            router.query.locale === 'ja'
+              ? company.nameJa
+              : company.nameEn ?? company.nameJa,
+          ticker: company.code,
+          path: `/${router.query.locale}/${
+            router.query.market
+          }/techs/companies/${company.code.toLowerCase()}`,
         }))}
       />
 
@@ -70,113 +72,40 @@ const Technology: NextPage<Props> = (props) => {
 
 export default Technology
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const paths = i18nextConfig.i18n.locales
-    .map((lng) =>
-      Object.values(Markets).map((market) => {
-        const techsAndUsingCompanies = getTechsAndUsingCompanies(
-          getCompanies(market)
-        )
-        return techsAndUsingCompanies.map((tech) => {
-          return (
-            market === Markets.US
-              ? getUsedAlphabets(tech.companies)
-              : getUsedNumbers(tech.companies)
-          ).map((initial) => ({
-            params: {
-              locale: lng,
-              technology: tech.tech.slug,
-              market: market,
-              initial: initial,
-            },
-          }))
-        })
-      })
-    )
-    .flat()
-    .flat()
-    .flat()
-
-  return {
-    fallback: false,
-    paths: paths,
-  }
+type Params = {
+  locale: string
+  market: string
+  technology: string
+  initial: string
 }
-export const getStaticProps = async (context: any) => {
-  const techsAndUsingCompanies = getTechsAndUsingCompanies(
-    getCompanies(context.params.market)
-  )
 
-  const tech = techsAndUsingCompanies.filter(
-    (it) => it.tech.slug === context.params.technology
-  )
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const params = context.params as Params
+  const baseUrl = process.env.API_BASE_URL
+  assertIsDefined(baseUrl)
 
-  if (tech.length !== 1) {
-    // Basically not happen
-    throw new Error(
-      `${tech.length} ${context.params.technology} was found in json`
-    )
+  const url = `${baseUrl}/${params.market}/techs/techs/${params.technology}/${params.initial}.json`
+
+  const res = await fetch(url)
+
+  if (res.status == 404) {
+    console.error(`Not found. url: ${url}`)
+    context.res.statusCode = 404
+    return {
+      notFound: true,
+    }
+  } else if (!res.ok) {
+    console.error(`Failed to fetch. status: ${res.status} url: ${url}`)
+    context.res.statusCode = 500
+    throw new Error(`Failed to fetch. status: ${res.status} url: ${url}`)
   }
 
-  const technologyInfo = tech[0]
-
-  // extract companies start with the params.initial and using the params.technology
-  const filteredCompanies = technologyInfo.companies.flatMap((company) => {
-    if (context.params.market === Markets.US) {
-      if (context.params.initial === '0') {
-        if (/^[A-Za-z]+/.test(company.nameEn)) {
-          return []
-        } else {
-          return company
-        }
-      }
-
-      if (company.nameEn.toLowerCase().startsWith(context.params.initial)) {
-        return company
-      } else {
-        return []
-      }
-    } else {
-      return company.code.startsWith(context.params.initial) ? company : []
-    }
-  })
-
-  // extract initials where a company exists starting with that
-  const initials = context.params.market === Markets.US ? ALPHABETS : NUMBERS
-  const filteredInitials = initials.filter((initial) => {
-    return technologyInfo.companies.some((company) => {
-      {
-        if (context.params.market === Markets.US) {
-          if (initial !== ALPHABETS[0]) {
-            return company.nameEn.toLowerCase().startsWith(initial)
-          } else {
-            return !/^[A-Za-z]+/.test(company.nameEn)
-          }
-        } else {
-          return company.code.startsWith(initial)
-        }
-      }
-    })
-  })
+  const companies = (await res.json()) as CompaniesUsingTechWithInitial
 
   return {
     props: {
-      technologyName: technologyInfo.tech.name,
-      market: context.params.market as string,
-      totalNumber: techsAndUsingCompanies[0].totalCompanyNumber,
-      usingCompanyNumber: technologyInfo.companies.length,
-      companies: filteredCompanies.map((it) => ({
-        ticker: it.code,
-        name: context.params.locale === 'en' ? it.nameEn : it.nameJa,
-        path: `/${context.params.locale}/${
-          context.params.market
-        }/techs/companies/${it.code.toLowerCase()}`,
-      })),
-      filteredInitials: filteredInitials,
-      ...(await serverSideTranslations(context.params.locale, [
-        'top',
-        'techs',
-      ])),
+      companies,
+      ...(await serverSideTranslations(params.locale, ['top', 'techs'])),
     },
   }
 }
