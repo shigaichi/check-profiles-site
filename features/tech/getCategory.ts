@@ -33,8 +33,21 @@ export const getAllCategories = (market: MarketsType): Category[] => {
 
   const companies = getCompanies(market);
   const categories = companies.flatMap((company) => company.categories);
-  const categoryIds = Array.from(new Set(categories.map((category) => category.id))).sort((a, b) => a - b);
-  const result = categoryIds.map((id) => categories.find((category) => category.id === id)!!);
+  const categoryIds = Array.from(new Set(categories.map((category) => category.id)));
+
+  const result = categoryIds.map((id) => categories.find((category) => category.id === id)!!)
+    .map((category) => {
+      const techs = new Set<string>
+      // get all techs of the category and distinct by add set
+      categories.filter((it) => it.id === category.id).map((it)=>{
+        it.technologies.map((tech)=>techs.add(tech.name))
+      })
+      // replace techs array with distinct techs which is found at the first time in scanning. So values other than name in techs array can not be used.
+      category.technologies = Array.from(techs).map((techName)=> categories.flatMap(it=>it.technologies).find((it)=>it.name===techName )!!)
+      return category
+    });
+
   ALL_CATEGORY_CACHE[market] = result;
+
   return result;
 };

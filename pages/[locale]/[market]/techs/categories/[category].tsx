@@ -114,22 +114,24 @@ export const getStaticProps = async (context: any) => {
   }
 
   //TODO: check category slug is unique
-  const techsOfCategory = category.technologies.map((tech) => {
-    const allCompanyUsingTech = techsAndUsingCompanies.find(
-      (it) => it.tech.name === tech.name
-    )
+  const techsOfCategory = category.technologies
+    .map((tech) => {
+      const allCompanyUsingTech = techsAndUsingCompanies.find(
+        (it) => it.tech.name === tech.name
+      )
 
-    if (allCompanyUsingTech == null) {
-      // Basically does not occur
-      throw new Error(`${tech.name} is not used in all companies`)
-    }
+      if (allCompanyUsingTech == null) {
+        // Basically does not occur
+        throw new Error(`${tech.name} is not used in all companies`)
+      }
 
-    const firstInitial = getUsedInitials(
-      allCompanyUsingTech.companies,
-      context.params.market
-    )[0]
-    return { name: tech.name, slug: tech.slug, firstInitial }
-  })
+      const firstInitial = getUsedInitials(
+        allCompanyUsingTech.companies,
+        context.params.market
+      )[0]
+      return { name: tech.name, slug: tech.slug, firstInitial }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   return {
     props: {

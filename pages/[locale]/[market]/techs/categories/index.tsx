@@ -91,6 +91,13 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async (context: any) => {
   const categories = getAllCategories(context.params.market)
+    .map((category) => {
+      return {
+        name: category.name,
+        slug: category.slug,
+      }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   return {
     props: {
