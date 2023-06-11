@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    command: "npx netlify deploy --build --prod"
+volumes:
+  node_modules:
