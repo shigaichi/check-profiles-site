@@ -11,7 +11,10 @@ import {
 import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
 import AllCompaniesList from 'components/techs/technologies/allCompaniesList'
-import { CompaniesUsingTechWithInitial } from 'features/tech/CompaniesUsingTechWithInitial'
+import {
+  CompaniesUsingTechWithInitial,
+  UsingCompany,
+} from 'features/tech/CompaniesUsingTechWithInitial'
 import { assertIsDefined } from 'lib/assert'
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
@@ -51,10 +54,7 @@ const Technology: NextPage<Props> = (props) => {
       <AllCompaniesList
         filteredInitials={companies.otherInitials}
         companies={companies.usingCompanies.map((company) => ({
-          name:
-            router.query.locale === 'ja'
-              ? company.nameJa
-              : company.nameEn ?? company.nameJa,
+          name: displayName(company, router.query.locale as string),
           ticker: company.code,
           path: `/${router.query.locale}/${
             router.query.market
@@ -107,5 +107,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       companies,
       ...(await serverSideTranslations(params.locale, ['top', 'techs'])),
     },
+  }
+}
+
+const displayName = (company: UsingCompany, locale: string): string => {
+  if (locale === 'ja') {
+    return company.nameJa ?? company.nameEn!!
+  } else {
+    return company.nameEn ?? company.nameJa!!
   }
 }

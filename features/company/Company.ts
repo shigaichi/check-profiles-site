@@ -2,8 +2,8 @@ import { Category } from "../tech/Techs";
 
 export type Company = {
   code: string
-  nameJa: string
-  nameEn: string
+  nameJa?: string
+  nameEn?: string
   marketJa: string[]
   marketEn: string[]
   lastCheckedAt: string

@@ -9,9 +9,9 @@ export const getUsedAlphabets = (companies: Company[]): string[] => {
   return ALPHABETS.filter((initial) =>
     companies.some((company) => {
       if (initial !== ALPHABETS[0]) {
-        return company.nameEn.toLowerCase().startsWith(initial);
+        return company.nameEn && company.nameEn.toLowerCase().startsWith(initial);
       } else {
-        return !/^[A-Za-z]+/.test(company.nameEn);
+        return company.nameEn && !/^[A-Za-z]+/.test(company.nameEn);
       }
     })
   );

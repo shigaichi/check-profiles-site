@@ -68,22 +68,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     throw new Error(`Failed to fetch. status: ${res.status} url: ${url}`)
   }
 
-  const repo = (await res.json()) as Company
+  const company = (await res.json()) as Company
 
   // The order of keys in JSON is not guaranteed.
   // So, it must be aligned on the server side.
   // TODO: check json batch
-  const lastUrl = repo.urls[repo.urls.length - 1].url
+  const lastUrl = company.urls[company.urls.length - 1].url
 
   return {
     props: {
-      code: params.code,
-      name: params.locale === 'en' ? repo.nameEn : repo.nameJa,
-      market: params.locale === 'en' ? repo.marketEn : repo.marketJa,
-      lastCheckedAt: repo.lastCheckedAt,
+      code: company.code,
+      name: displayName(params.locale, company.nameJa, company.nameEn),
+      market: params.locale === 'en' ? company.marketEn : company.marketJa,
+      lastCheckedAt: company.lastCheckedAt,
       url: lastUrl,
-      categories: repo.categories,
+      categories: company.categories,
       ...(await serverSideTranslations(params.locale, ['top', 'techs'])),
     },
+  }
+}
+
+const displayName = (
+  locale: string,
+  nameJa?: string,
+  nameEn?: string
+): string => {
+  if (locale === 'ja') {
+    return nameJa ?? nameEn!!
+  } else {
+    return nameEn ?? nameJa!!
   }
 }

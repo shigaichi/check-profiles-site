@@ -8,6 +8,6 @@ export type CompaniesUsingTechWithInitial ={
 
 export type UsingCompany ={
   code: string
-  nameJa: string
+  nameJa?: string
   nameEn?: string
 }
