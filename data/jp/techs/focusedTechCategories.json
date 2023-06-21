@@ -1,0 +1,28 @@
+{
+    "focusedTechCategories": [
+        {
+            "id": 59,
+            "name": "JavaScript libraries",
+            "technologies": [
+                {
+                    "name": "jQuery",
+                    "slug": "jquery"
+                },
+                {
+                    "name": "Swiper",
+                    "slug": "swiper"
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "name": "Paas",
+            "technologies": [
+                {
+                    "name": "Amazon Web Services",
+                    "slug": "amazon-web-services"
+                }
+            ]
+        }
+    ]
+}

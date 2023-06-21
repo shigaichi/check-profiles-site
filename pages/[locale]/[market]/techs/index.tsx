@@ -14,16 +14,8 @@ import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
 import TechnologiesList from 'components/techs/technologiesList'
 import { Markets } from 'consts/markets'
-import jpFeaturedTechs from 'data/jp/techs/featuredTechs.json'
-import usFeaturedTechs from 'data/us/techs/featuredTechs.json'
-import { getCompanies } from 'features/company/file/getCompanies'
 import { getUsedInitials } from 'features/company/getUsedInitials'
-import { getCategory } from 'features/tech/getCategory'
-import {
-  getCompanyUsingTech,
-  getTechsAndUsingCompanies,
-} from 'features/tech/getTechs'
-import { Category } from 'features/tech/Techs'
+import { getFocusedTechCategories } from 'features/tech/getFocusedTechCategories'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { Trans, useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
@@ -115,70 +107,25 @@ export const getStaticPaths = () => ({
 })
 
 export const getStaticProps = async (context: any) => {
-  //TODO: check slug can be null
-  const allCompanies = getCompanies(context.params.market)
-  const allTechs = getTechsAndUsingCompanies(allCompanies).map((it) => it.tech)
-
-  // extract techs which are listed in the json file
-  const featuredTechsFromJson = (
-    context.params.market === Markets.US ? usFeaturedTechs : jpFeaturedTechs
-  ).featuredTechs.map((featuredTech) => {
-    const featuredTechFromJson = allTechs.find(
-      (tech) => tech.name === featuredTech
-    )
-
-    if (featuredTechFromJson === undefined) {
-      throw Error(
-        `No company uses ${featuredTech} listed in the featured json file`
-      )
-    }
-
-    return featuredTechFromJson
-  })
-
-  // get categories by techs
-  const categories = featuredTechsFromJson.flatMap((tech) =>
-    getCategory(tech).flatMap((category) => {
-      // push only one tech in the category (category had all techs belongs to it)
-      category.technologies = [tech]
-      return category
-    })
-  )
-
-  // merge technologies in categories
-  const mergedCategories = categories
-    .reduce((acc, category) => {
-      const foundCategory = acc.find((it) => it.id === category.id)
-      if (foundCategory === undefined) {
-        acc.push(category)
-      } else {
-        // merge technologies in foundCategory and technologies in category and delete duplicated
-        foundCategory.technologies = Array.from(
-          new Set(foundCategory.technologies.concat(category.technologies))
-        )
+  const categories = getFocusedTechCategories(context.params.market).map(
+    (category) => {
+      return {
+        id: category.id,
+        name: category.name,
+        technologies: category.technologies.map((tech) => {
+          return {
+            name: tech.name,
+            slug: tech.slug,
+            initial: getUsedInitials(tech.slug, context.params.market)[0],
+          }
+        }),
       }
-      return acc
-    }, Array<Category>())
-    .map((category) => ({
-      id: category.id,
-      name: category.name,
-      technologies: category.technologies.map((technology) => {
-        const initial = getUsedInitials(
-          getCompanyUsingTech(technology, allCompanies),
-          context.params.market
-        )[0]
-        return {
-          name: technology.name,
-          slug: technology.slug,
-          initial: initial,
-        }
-      }),
-    }))
+    }
+  )
 
   return {
     props: {
-      categories: mergedCategories,
-      // companies: allCompanies,
+      categories: categories,
       ...(await serverSideTranslations(context.params.locale, [
         'top',
         'techs',

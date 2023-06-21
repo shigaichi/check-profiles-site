@@ -1,11 +1,3 @@
-import { Company } from "features/company/Company";
-
-export type TechsAndUsingCompanies = {
-  totalCompanyNumber: number;
-  tech: Technology;
-  companies: Company[];
-}
-
 export type Category = {
   id: number
   name: string

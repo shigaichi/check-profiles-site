@@ -13,10 +13,8 @@ import {
 import AsideInfo from 'components/common/asideInfo'
 import WapInfo from 'components/common/wapInfo'
 import { Markets } from 'consts/markets'
-import { getCompanies } from 'features/company/file/getCompanies'
 import { getUsedInitials } from 'features/company/getUsedInitials'
 import { getAllCategories } from 'features/tech/getCategory'
-import { getTechsAndUsingCompanies } from 'features/tech/getTechs'
 import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
@@ -105,10 +103,6 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async (context: any) => {
-  const techsAndUsingCompanies = getTechsAndUsingCompanies(
-    getCompanies(context.params.market)
-  )
-
   // get category from all categories by slug
   const category = getAllCategories(context.params.market).find(
     (it) => it.slug === context.params.category
@@ -122,19 +116,7 @@ export const getStaticProps = async (context: any) => {
   //TODO: check category slug is unique
   const techsOfCategory = category.technologies
     .map((tech) => {
-      const allCompanyUsingTech = techsAndUsingCompanies.find(
-        (it) => it.tech.name === tech.name
-      )
-
-      if (allCompanyUsingTech == null) {
-        // Basically does not occur
-        throw new Error(`${tech.name} is not used in all companies`)
-      }
-
-      const firstInitial = getUsedInitials(
-        allCompanyUsingTech.companies,
-        context.params.market
-      )[0]
+      const firstInitial = getUsedInitials(tech.slug, context.params.market)[0]
       return { name: tech.name, slug: tech.slug, firstInitial }
     })
     .sort((a, b) => a.name.localeCompare(b.name))
