@@ -9,6 +9,7 @@ import { assertIsDefined } from 'lib/assert'
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -18,24 +19,29 @@ const Code: NextPage<Props> = (props) => {
   const lastCheckedAt = parseISO(props.lastCheckedAt)
 
   return (
-    <VStack align={'stretch'} spacing={8} padding={4}>
-      <Box borderBottomColor={'black'} borderBottom="1px">
-        <Heading as="h1" size="md">
-          {t('companyHeading', { val: props.name })}
-        </Heading>
-      </Box>
-      <CompanyInfo
-        companyCode={props.code}
-        companyName={props.name}
-        lastChecked={lastCheckedAt}
-        link={props.url}
-        market={props.market}
-      />
-      <TechnologiesList categories={props.categories} />
-      <Divider />
-      <AsideInfo />
-      <WapInfo />
-    </VStack>
+    <>
+      <Head>
+        <title>{t('companyPageTitle', { val: props.name })}</title>
+      </Head>
+      <VStack align={'stretch'} spacing={8} padding={4}>
+        <Box borderBottomColor={'black'} borderBottom="1px">
+          <Heading as="h1" size="md">
+            {t('companyHeading', { val: props.name })}
+          </Heading>
+        </Box>
+        <CompanyInfo
+          companyCode={props.code}
+          companyName={props.name}
+          lastChecked={lastCheckedAt}
+          link={props.url}
+          market={props.market}
+        />
+        <TechnologiesList categories={props.categories} />
+        <Divider />
+        <AsideInfo />
+        <WapInfo />
+      </VStack>
+    </>
   )
 }
 

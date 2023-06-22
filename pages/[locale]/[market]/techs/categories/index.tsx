@@ -18,6 +18,7 @@ import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -47,29 +48,34 @@ const Categories: NextPage<Props> = (props) => {
   })
 
   return (
-    <VStack spacing="8" padding={4} align={'stretch'}>
-      <Box borderBottomColor={'black'} borderBottom="1px">
-        <Heading as="h1" size={'md'}>
-          {t('categoriesHeading')}
-        </Heading>
-      </Box>
-      <Card>
-        <CardHeader>
-          <Heading as="h2" size="md">
-            {t('categoriesAside')}
+    <>
+      <Head>
+        <title>{t('categoriesPageTitle')}</title>
+      </Head>
+      <VStack spacing="8" padding={4} align={'stretch'}>
+        <Box borderBottomColor={'black'} borderBottom="1px">
+          <Heading as="h1" size={'md'}>
+            {t('categoriesHeading')}
           </Heading>
-        </CardHeader>
+        </Box>
+        <Card>
+          <CardHeader>
+            <Heading as="h2" size="md">
+              {t('categoriesAside')}
+            </Heading>
+          </CardHeader>
 
+          <Divider />
+
+          <CardBody>
+            <UnorderedList spacing={2}>{technologies}</UnorderedList>
+          </CardBody>
+        </Card>
         <Divider />
-
-        <CardBody>
-          <UnorderedList spacing={2}>{technologies}</UnorderedList>
-        </CardBody>
-      </Card>
-      <Divider />
-      <AsideInfo />
-      <WapInfo />
-    </VStack>
+        <AsideInfo />
+        <WapInfo />
+      </VStack>
+    </>
   )
 }
 

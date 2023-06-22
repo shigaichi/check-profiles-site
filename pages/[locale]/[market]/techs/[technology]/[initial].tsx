@@ -19,6 +19,7 @@ import { assertIsDefined } from 'lib/assert'
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
@@ -31,42 +32,49 @@ const Technology: NextPage<Props> = (props) => {
 
   //TODO: version
   return (
-    <VStack align={'stretch'} spacing={8} padding={4}>
-      <Box borderBottomColor={'black'} borderBottom="1px">
-        <Heading as="h1" size="md">
-          {t('technologyUsingCompany', { val: companies.techName })}
-        </Heading>
-      </Box>
-      <Card>
-        <CardBody>
-          <UnorderedList>
-            <ListItem>
-              {t('companyNumber', {
-                usingCompanyNumber: companies.usingCompaniesNumber,
-                totalNumber: companies.totalCompaniesNumber,
-                technologyName: companies.techName,
-              })}
-            </ListItem>
-          </UnorderedList>
-        </CardBody>
-      </Card>
+    <>
+      <Head>
+        <title>
+          {t('technologyUsingCompanyPageTitle', { val: companies.techName })}
+        </title>
+      </Head>
+      <VStack align={'stretch'} spacing={8} padding={4}>
+        <Box borderBottomColor={'black'} borderBottom="1px">
+          <Heading as="h1" size="md">
+            {t('technologyUsingCompany', { val: companies.techName })}
+          </Heading>
+        </Box>
+        <Card>
+          <CardBody>
+            <UnorderedList>
+              <ListItem>
+                {t('companyNumber', {
+                  usingCompanyNumber: companies.usingCompaniesNumber,
+                  totalNumber: companies.totalCompaniesNumber,
+                  technologyName: companies.techName,
+                })}
+              </ListItem>
+            </UnorderedList>
+          </CardBody>
+        </Card>
 
-      <AllCompaniesList
-        filteredInitials={companies.otherInitials}
-        companies={companies.usingCompanies.map((company) => ({
-          name: displayName(company, router.query.locale as string),
-          ticker: company.code,
-          path: `/${router.query.locale}/${
-            router.query.market
-          }/techs/companies/${company.code.toLowerCase()}`,
-        }))}
-      />
+        <AllCompaniesList
+          filteredInitials={companies.otherInitials}
+          companies={companies.usingCompanies.map((company) => ({
+            name: displayName(company, router.query.locale as string),
+            ticker: company.code,
+            path: `/${router.query.locale}/${
+              router.query.market
+            }/techs/companies/${company.code.toLowerCase()}`,
+          }))}
+        />
 
-      <Divider />
+        <Divider />
 
-      <AsideInfo />
-      <WapInfo />
-    </VStack>
+        <AsideInfo />
+        <WapInfo />
+      </VStack>
+    </>
   )
 }
 

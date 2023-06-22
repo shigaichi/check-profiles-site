@@ -1,8 +1,8 @@
 {
     "usTechListHeading": "アメリカ上場企業で使われているWeb技術",
     "usTechListText": "NYSEなどアメリカで上場している企業のコーポレートサイトで使われている技術を収集しています。",
-    "jpxTechListHeading": "日本上場企業で使われているWeb技術",
-    "jpxTechListText": "JPXで上場している企業のコーポレートサイトで使われている技術を収集しています。",
+    "jpxTechListHeading": "日本の上場企業で使われているWeb技術",
+    "jpxTechListText": "日本で上場している企業のコーポレートサイトで使われている技術を収集しています。",
     "viewHere": "見る",
     "pageNotFound": "404 - ページが見つかりませんでした",
     "toTopPageFrom404": "トップページに戻る"

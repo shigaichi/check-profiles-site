@@ -4,6 +4,7 @@ import TopLinkCard from 'components/top/topLinkCard'
 import { Markets } from 'consts/markets'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import i18nextConfig from '../../next-i18next.config'
 
@@ -12,32 +13,37 @@ const TopPage = () => {
   const router = useRouter()
 
   return (
-    <main>
-      <Flex flexWrap={'wrap'} gap={8} padding={4}>
-        <TopLinkCard
-          heading={t('usTechListHeading')}
-          text={t('usTechListText')}
-          href={{
-            pathname: `${router.pathname}/[market]/techs`,
-            query: {
-              locale: router.query.locale,
-              market: Markets.US,
-            },
-          }}
-        />
-        <TopLinkCard
-          heading={t('jpxTechListHeading')}
-          text={t('jpxTechListText')}
-          href={{
-            pathname: `${router.pathname}/[market]/techs`,
-            query: {
-              locale: router.query.locale,
-              market: Markets.JA,
-            },
-          }}
-        />
-      </Flex>
-    </main>
+    <>
+      <Head>
+        <title>Top Page</title>
+      </Head>
+      <main>
+        <Flex flexWrap={'wrap'} gap={8} padding={4}>
+          <TopLinkCard
+            heading={t('usTechListHeading')}
+            text={t('usTechListText')}
+            href={{
+              pathname: `${router.pathname}/[market]/techs`,
+              query: {
+                locale: router.query.locale,
+                market: Markets.US,
+              },
+            }}
+          />
+          <TopLinkCard
+            heading={t('jpxTechListHeading')}
+            text={t('jpxTechListText')}
+            href={{
+              pathname: `${router.pathname}/[market]/techs`,
+              query: {
+                locale: router.query.locale,
+                market: Markets.JA,
+              },
+            }}
+          />
+        </Flex>
+      </main>
+    </>
   )
 }
 

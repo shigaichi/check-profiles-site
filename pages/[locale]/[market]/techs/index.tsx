@@ -28,6 +28,7 @@ import { InferGetStaticPropsType, NextPage } from 'next'
 import { Trans, useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 import NextLink, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -47,37 +48,42 @@ const Techs: NextPage<Props> = (props) => {
   }
 
   return (
-    <VStack spacing="8" padding={4} align={'stretch'}>
-      <Box borderBottomColor={'black'} borderBottom="1px">
-        <Heading as="h1" size={'md'}>
-          {router.query.market === Markets.US
-            ? t('techsHeadingOfUs')
-            : t('techsHeadingOfJp')}
-        </Heading>
-      </Box>
-      <Card>
-        <CardBody>
-          <UnorderedList>
-            <ListItem>
-              <Text>{t('featuredTechnologiesAside')}</Text>
-            </ListItem>
-            <ListItem>
-              <Trans
-                ns="techs"
-                i18nKey="techsToCategoriesLink"
-                components={{
-                  l: <LinkForTrans href={toCategoryHref} />,
-                }}
-              />
-            </ListItem>
-          </UnorderedList>
-        </CardBody>
-      </Card>
-      <TechnologiesList categories={props.categories} />
-      <Divider />
-      <AsideInfo />
-      <WapInfo />
-    </VStack>
+    <>
+      <Head>
+        <title>{t('techsPageTitle')}</title>
+      </Head>
+      <VStack spacing="8" padding={4} align={'stretch'}>
+        <Box borderBottomColor={'black'} borderBottom="1px">
+          <Heading as="h1" size={'md'}>
+            {router.query.market === Markets.US
+              ? t('techsHeadingOfUs')
+              : t('techsHeadingOfJp')}
+          </Heading>
+        </Box>
+        <Card>
+          <CardBody>
+            <UnorderedList>
+              <ListItem>
+                <Text>{t('featuredTechnologiesAside')}</Text>
+              </ListItem>
+              <ListItem>
+                <Trans
+                  ns="techs"
+                  i18nKey="techsToCategoriesLink"
+                  components={{
+                    l: <LinkForTrans href={toCategoryHref} />,
+                  }}
+                />
+              </ListItem>
+            </UnorderedList>
+          </CardBody>
+        </Card>
+        <TechnologiesList categories={props.categories} />
+        <Divider />
+        <AsideInfo />
+        <WapInfo />
+      </VStack>
+    </>
   )
 }
 

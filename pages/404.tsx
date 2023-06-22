@@ -3,6 +3,7 @@ import { InferGetStaticPropsType, NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 import NextLink from 'next/link'
 import { useEffect } from 'react'
 
@@ -21,14 +22,19 @@ const Custom404: NextPage<Props> = () => {
   }, [i18n])
 
   return (
-    <VStack>
-      <Heading as={'h1'}>{t('pageNotFound')}</Heading>
-      <NextLink href={'/' + i18n.language ?? 'en'} legacyBehavior passHref>
-        <Link style={{ textDecoration: 'none' }}>
-          <Text textDecoration={'underline'}>{t('toTopPageFrom404')}</Text>
-        </Link>
-      </NextLink>
-    </VStack>
+    <>
+      <Head>
+        <title>Not Found</title>
+      </Head>
+      <VStack>
+        <Heading as={'h1'}>{t('pageNotFound')}</Heading>
+        <NextLink href={'/' + i18n.language ?? 'en'} legacyBehavior passHref>
+          <Link style={{ textDecoration: 'none' }}>
+            <Text textDecoration={'underline'}>{t('toTopPageFrom404')}</Text>
+          </Link>
+        </NextLink>
+      </VStack>
+    </>
   )
 }
 
