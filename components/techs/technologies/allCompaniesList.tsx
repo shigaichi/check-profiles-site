@@ -78,10 +78,13 @@ const AllCompaniesList = (props: Props) => {
 
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
-          <UnorderedList>{companyList}</UnorderedList>
+          <UnorderedList spacing={2}>{companyList}</UnorderedList>
         </Stack>
       </CardBody>
+
       <Divider />
+
+      {/* pagination parts */}
       <CardBody>
         <Center>
           <HStack>
