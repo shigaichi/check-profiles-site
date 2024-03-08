@@ -11,8 +11,8 @@ import '../styles/globals.css'
 function App({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     window.onerror = (message) => {
-      if (typeof umami !== 'undefined') {
-        umami.track('page_error', {
+      if (typeof window.umami !== 'undefined') {
+        window.umami.track('page_error', {
           path: router.asPath,
           message: message as string,
         })
@@ -31,7 +31,6 @@ function App({ Component, pageProps, router }: AppProps) {
       <Script
         src="https://uma.kyokko.work/uma"
         data-website-id="3dfda713-1111-40e3-9838-3432773f251d"
-        async
       ></Script>
 
       <MainLayout>
