@@ -60,56 +60,6 @@
                     "description": "Adobe Analytics is a web analytics, marketing and cross-channel analytics application."
                 }
             ]
-        },
-        {
-            "id": 16,
-            "name": "Security",
-            "slug": "security",
-            "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "default.svg",
-                    "name": "HSTS",
-                    "slug": "hsts",
-                    "version": null,
-                    "website": "https://www.rfc-editor.org/rfc/rfc6797#section-6.1",
-                    "rootPath": true,
-                    "categories": [
-                        {
-                            "id": 16,
-                            "name": "Security",
-                            "slug": "security"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS."
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "name": "Miscellaneous",
-            "slug": "miscellaneous",
-            "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "Open Graph.png",
-                    "name": "Open Graph",
-                    "slug": "open-graph",
-                    "version": null,
-                    "website": "https://ogp.me",
-                    "rootPath": true,
-                    "categories": [
-                        {
-                            "id": 19,
-                            "name": "Miscellaneous",
-                            "slug": "miscellaneous"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Open Graph is a protocol that is used to integrate any web page into the social graph."
-                }
-            ]
         }
     ]
 }

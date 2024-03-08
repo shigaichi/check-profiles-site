@@ -15,30 +15,6 @@
     },
     "categories": [
         {
-            "id": 1,
-            "name": "CMS",
-            "slug": "cms",
-            "technologies": [
-                {
-                    "cpe": "cpe:2.3:a:adobe:experience_manager:*:*:*:*:*:*:*:*",
-                    "icon": "Adobe Experience Platform.svg",
-                    "name": "Adobe Experience Manager",
-                    "slug": "adobe-experience-manager",
-                    "version": null,
-                    "website": "https://www.adobe.com/marketing/experience-manager.html",
-                    "categories": [
-                        {
-                            "id": 1,
-                            "name": "CMS",
-                            "slug": "cms"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Adobe Experience Manager (AEM) is a content management solution for building websites, mobile apps and forms."
-                }
-            ]
-        },
-        {
             "id": 6,
             "name": "Ecommerce",
             "slug": "ecommerce",
@@ -63,109 +39,10 @@
             ]
         },
         {
-            "id": 27,
-            "name": "Programming languages",
-            "slug": "programming-languages",
-            "technologies": [
-                {
-                    "cpe": "cpe:2.3:a:oracle:jre:*:*:*:*:*:*:*:*",
-                    "icon": "Java.png",
-                    "name": "Java",
-                    "slug": "java",
-                    "version": null,
-                    "website": "http://java.com",
-                    "categories": [
-                        {
-                            "id": 27,
-                            "name": "Programming languages",
-                            "slug": "programming-languages"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Java is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible."
-                }
-            ]
-        },
-        {
-            "id": 62,
-            "name": "PaaS",
-            "slug": "paas",
-            "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "azure.svg",
-                    "name": "Azure",
-                    "slug": "azure",
-                    "version": null,
-                    "website": "https://azure.microsoft.com",
-                    "categories": [
-                        {
-                            "id": 62,
-                            "name": "PaaS",
-                            "slug": "paas"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Azure is a cloud computing service for building, testing, deploying, and managing applications and services through Microsoft-managed data centers."
-                }
-            ]
-        },
-        {
-            "id": 10,
-            "name": "Analytics",
-            "slug": "analytics",
-            "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "azure.svg",
-                    "name": "Azure Monitor",
-                    "slug": "azure-monitor",
-                    "version": null,
-                    "website": "https://azure.microsoft.com/en-us/services/monitor",
-                    "categories": [
-                        {
-                            "id": 10,
-                            "name": "Analytics",
-                            "slug": "analytics"
-                        },
-                        {
-                            "id": 92,
-                            "name": "Performance",
-                            "slug": "performance"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Azure Monitor collects monitoring telemetry from a variety of on-premises and Azure sources. Azure Monitor helps you maximise the availability and performance of your applications and services."
-                }
-            ]
-        },
-        {
             "id": 59,
             "name": "JavaScript libraries",
             "slug": "javascript-libraries",
             "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "default.svg",
-                    "name": "LazySizes",
-                    "slug": "lazysizes",
-                    "version": null,
-                    "website": "https://github.com/aFarkas/lazysizes",
-                    "categories": [
-                        {
-                            "id": 59,
-                            "name": "JavaScript libraries",
-                            "slug": "javascript-libraries"
-                        },
-                        {
-                            "id": 92,
-                            "name": "Performance",
-                            "slug": "performance"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "LazySizes is a JavaScript library used to delay the loading of images (iframes, scripts, etc) until they come into view."
-                },
                 {
                     "cpe": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
                     "icon": "jQuery.svg",
@@ -182,71 +59,6 @@
                     ],
                     "confidence": 100,
                     "description": "jQuery is a JavaScript library which is a free, open-source software designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax."
-                },
-                {
-                    "cpe": null,
-                    "icon": "core-js.png",
-                    "name": "core-js",
-                    "slug": "core-js",
-                    "version": "3.22.7",
-                    "website": "https://github.com/zloirock/core-js",
-                    "categories": [
-                        {
-                            "id": 59,
-                            "name": "JavaScript libraries",
-                            "slug": "javascript-libraries"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features."
-                }
-            ]
-        },
-        {
-            "id": 16,
-            "name": "Security",
-            "slug": "security",
-            "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "default.svg",
-                    "name": "HSTS",
-                    "slug": "hsts",
-                    "version": null,
-                    "website": "https://www.rfc-editor.org/rfc/rfc6797#section-6.1",
-                    "categories": [
-                        {
-                            "id": 16,
-                            "name": "Security",
-                            "slug": "security"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS."
-                }
-            ]
-        },
-        {
-            "id": 19,
-            "name": "Miscellaneous",
-            "slug": "miscellaneous",
-            "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "Open Graph.png",
-                    "name": "Open Graph",
-                    "slug": "open-graph",
-                    "version": null,
-                    "website": "https://ogp.me",
-                    "categories": [
-                        {
-                            "id": 19,
-                            "name": "Miscellaneous",
-                            "slug": "miscellaneous"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Open Graph is a protocol that is used to integrate any web page into the social graph."
                 }
             ]
         }

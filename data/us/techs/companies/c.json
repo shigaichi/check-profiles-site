@@ -1,1 +1,212 @@
-{"code":"C","nameJa":null,"nameEn":"CITIGROUP INC","marketJa":["NYSE"],"marketEn":["NYSE"],"lastCheckedAt":"2023-05-29T14:37:28.437372+09:00","urls":[{"url":"https://www.citigroup.com/","status":301},{"url":"http://www.citigroup.com/citi/","status":301},{"url":"https://www.citigroup.com/citi/","status":301},{"url":"https://www.citigroup.com/global","status":200}],"categories":[{"id":16,"name":"Security","slug":"security","technologies":[{"cpe":"","icon":"Akamai.svg","name":"Akamai Bot Manager","slug":"akamai-bot-manager","version":null,"website":"https://www.akamai.com/us/en/products/security/bot-manager.jsp","categories":[{"id":16,"name":"Security","slug":"security"}],"confidence":100,"description":"Akamai Bot Manager detect bots using device fingerprinting bot signatures."},{"cpe":"","icon":"default.svg","name":"HSTS","slug":"hsts","version":null,"website":"https://www.rfc-editor.org/rfc/rfc6797#section-6.1","categories":[{"id":16,"name":"Security","slug":"security"}],"confidence":100,"description":"HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS."}]},{"id":42,"name":"Tag managers","slug":"tag-managers","technologies":[{"cpe":"","icon":"Adobe Experience Platform.svg","name":"Adobe Experience Platform Launch","slug":"adobe-experience-platform-launch","version":null,"website":"https://docs.adobelaunch.com/getting-started","categories":[{"id":42,"name":"Tag managers","slug":"tag-managers"}],"confidence":100,"description":"Adobe Experience Cloud Launch is an extendable tag management solution for Adobe Experience Cloud, Adobe Experience Platform, and other applications."}]},{"id":27,"name":"Programming languages","slug":"programming-languages","technologies":[{"cpe":"cpe:2.3:a:nodejs:node.js:*:*:*:*:*:*:*:*","icon":"Node.js.svg","name":"Node.js","slug":"node-js","version":null,"website":"http://nodejs.org","categories":[{"id":27,"name":"Programming languages","slug":"programming-languages"}],"confidence":100,"description":"Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser."}]},{"id":18,"name":"Web frameworks","slug":"web-frameworks","technologies":[{"cpe":"cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*","icon":"Next.js.svg","name":"Next.js","slug":"next-js","version":"12.1.6","website":"https://nextjs.org","categories":[{"id":12,"name":"JavaScript frameworks","slug":"javascript-frameworks"},{"id":18,"name":"Web frameworks","slug":"web-frameworks"},{"id":22,"name":"Web servers","slug":"web-servers"},{"id":57,"name":"Static site generator","slug":"static-site-generator"}],"confidence":100,"description":"Next.js is a React framework for developing single page Javascript applications."}]},{"id":36,"name":"Advertising","slug":"advertising","technologies":[{"cpe":"","icon":"Twitter.svg","name":"Twitter Ads","slug":"twitter-ads","version":null,"website":"https://ads.twitter.com","categories":[{"id":36,"name":"Advertising","slug":"advertising"}],"confidence":100,"description":"Twitter Ads is an advertising platform for Twitter 'microblogging' system."}]},{"id":59,"name":"JavaScript libraries","slug":"javascript-libraries","technologies":[{"cpe":"cpe:2.3:a:lodash:lodash:*:*:*:*:*:*:*:*","icon":"Lodash.svg","name":"Lodash","slug":"lodash","version":"4.17.21","website":"http://www.lodash.com","categories":[{"id":59,"name":"JavaScript libraries","slug":"javascript-libraries"}],"confidence":100,"description":"Lodash is a JavaScript library which provides utility functions for common programming tasks using the functional programming paradigm."},{"cpe":"","icon":"core-js.png","name":"core-js","slug":"core-js","version":"2.6.12","website":"https://github.com/zloirock/core-js","categories":[{"id":59,"name":"JavaScript libraries","slug":"javascript-libraries"}],"confidence":100,"description":"core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features."},{"cpe":"","icon":"web-vitals.svg","name":"web-vitals","slug":"web-vitals","version":null,"website":"https://github.com/GoogleChrome/web-vitals","categories":[{"id":59,"name":"JavaScript libraries","slug":"javascript-libraries"},{"id":78,"name":"RUM","slug":"rum"}],"confidence":100,"description":"The web-vitals JavaScript is a tiny, modular library for measuring all the web vitals metrics on real users."}]},{"id":70,"name":"SSL/TLS certificate authorities","slug":"ssl-tls-certificate-authorities","technologies":[{"cpe":"","icon":"DigiCert.svg","name":"DigiCert","slug":"digicert","version":null,"website":"https://www.digicert.com/","categories":[{"id":70,"name":"SSL/TLS certificate authorities","slug":"ssl-tls-certificate-authorities"}],"confidence":100,"description":""}]},{"id":31,"name":"CDN","slug":"cdn","technologies":[{"cpe":"","icon":"Akamai.svg","name":"Akamai","slug":"akamai","version":null,"website":"http://akamai.com","categories":[{"id":31,"name":"CDN","slug":"cdn"}],"confidence":100,"description":"Akamai is global content delivery network (CDN) services provider for media and software delivery, and cloud security solutions."}]},{"id":12,"name":"JavaScript frameworks","slug":"javascript-frameworks","technologies":[{"cpe":"cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*","icon":"Next.js.svg","name":"Next.js","slug":"next-js","version":"12.1.6","website":"https://nextjs.org","categories":[{"id":12,"name":"JavaScript frameworks","slug":"javascript-frameworks"},{"id":18,"name":"Web frameworks","slug":"web-frameworks"},{"id":22,"name":"Web servers","slug":"web-servers"},{"id":57,"name":"Static site generator","slug":"static-site-generator"}],"confidence":100,"description":"Next.js is a React framework for developing single page Javascript applications."},{"cpe":"cpe:2.3:a:facebook:react:*:*:*:*:*:*:*:*","icon":"React.svg","name":"React","slug":"react","version":null,"website":"https://reactjs.org","categories":[{"id":12,"name":"JavaScript frameworks","slug":"javascript-frameworks"}],"confidence":100,"description":"React is an open-source JavaScript library for building user interfaces or UI components."}]},{"id":22,"name":"Web servers","slug":"web-servers","technologies":[{"cpe":"cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*","icon":"Next.js.svg","name":"Next.js","slug":"next-js","version":"12.1.6","website":"https://nextjs.org","categories":[{"id":12,"name":"JavaScript frameworks","slug":"javascript-frameworks"},{"id":18,"name":"Web frameworks","slug":"web-frameworks"},{"id":22,"name":"Web servers","slug":"web-servers"},{"id":57,"name":"Static site generator","slug":"static-site-generator"}],"confidence":100,"description":"Next.js is a React framework for developing single page Javascript applications."},{"cpe":"cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*","icon":"Apache.svg","name":"Apache HTTP Server","slug":"apache-http-server","version":null,"website":"https://httpd.apache.org/","categories":[{"id":22,"name":"Web servers","slug":"web-servers"}],"confidence":100,"description":"Apache is a free and open-source cross-platform web server software."}]},{"id":78,"name":"RUM","slug":"rum","technologies":[{"cpe":"","icon":"web-vitals.svg","name":"web-vitals","slug":"web-vitals","version":null,"website":"https://github.com/GoogleChrome/web-vitals","categories":[{"id":59,"name":"JavaScript libraries","slug":"javascript-libraries"},{"id":78,"name":"RUM","slug":"rum"}],"confidence":100,"description":"The web-vitals JavaScript is a tiny, modular library for measuring all the web vitals metrics on real users."}]},{"id":19,"name":"Miscellaneous","slug":"miscellaneous","technologies":[{"cpe":"","icon":"Webpack.svg","name":"Webpack","slug":"webpack","version":null,"website":"https://webpack.js.org/","categories":[{"id":19,"name":"Miscellaneous","slug":"miscellaneous"}],"confidence":50,"description":"Webpack is an open-source JavaScript module bundler."},{"cpe":"","icon":"Open Graph.png","name":"Open Graph","slug":"open-graph","version":null,"website":"https://ogp.me","categories":[{"id":19,"name":"Miscellaneous","slug":"miscellaneous"}],"confidence":100,"description":"Open Graph is a protocol that is used to integrate any web page into the social graph."},{"cpe":"","icon":"Webpack.svg","name":"Module Federation","slug":"module-federation","version":null,"website":"https://webpack.js.org/concepts/module-federation/","categories":[{"id":19,"name":"Miscellaneous","slug":"miscellaneous"}],"confidence":50,"description":"Module Federation is a webpack technology for dynamically loading parts of other independently deployed builds."}]},{"id":57,"name":"Static site generator","slug":"static-site-generator","technologies":[{"cpe":"cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*","icon":"Next.js.svg","name":"Next.js","slug":"next-js","version":"12.1.6","website":"https://nextjs.org","categories":[{"id":12,"name":"JavaScript frameworks","slug":"javascript-frameworks"},{"id":18,"name":"Web frameworks","slug":"web-frameworks"},{"id":22,"name":"Web servers","slug":"web-servers"},{"id":57,"name":"Static site generator","slug":"static-site-generator"}],"confidence":100,"description":"Next.js is a React framework for developing single page Javascript applications."}]},{"id":10,"name":"Analytics","slug":"analytics","technologies":[{"cpe":"cpe:2.3:a:matomo:matomo:*:*:*:*:*:*:*:*","icon":"Matomo.svg","name":"Matomo Analytics","slug":"matomo-analytics","version":null,"website":"https://matomo.org","categories":[{"id":10,"name":"Analytics","slug":"analytics"}],"confidence":100,"description":"Matomo Analytics is a free and open-source web analytics application, that runs on a PHP/MySQL web-server."},{"cpe":"","icon":"Linkedin.svg","name":"Linkedin Insight Tag","slug":"linkedin-insight-tag","version":null,"website":"https://business.linkedin.com/marketing-solutions/insight-tag","categories":[{"id":10,"name":"Analytics","slug":"analytics"}],"confidence":100,"description":"LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics."},{"cpe":"","icon":"Facebook.svg","name":"Facebook Pixel","slug":"facebook-pixel","version":"2.9.104","website":"http://facebook.com","categories":[{"id":10,"name":"Analytics","slug":"analytics"}],"confidence":100,"description":"Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising."},{"cpe":"","icon":"Adobe Analytics.svg","name":"Adobe Analytics","slug":"adobe-analytics","version":null,"website":"https://www.adobe.com/analytics/adobe-analytics.html","categories":[{"id":10,"name":"Analytics","slug":"analytics"}],"confidence":100,"description":"Adobe Analytics is a web analytics, marketing and cross-channel analytics application."}]}]}
+{
+    "code": "C",
+    "nameJa": null,
+    "nameEn": "CITIGROUP INC",
+    "marketJa": [
+        "NYSE"
+    ],
+    "marketEn": [
+        "NYSE"
+    ],
+    "lastCheckedAt": "2023-05-29T14:37:28.437372+09:00",
+    "urls": [
+        {
+            "url": "https://www.citigroup.com/",
+            "status": 301
+        },
+        {
+            "url": "http://www.citigroup.com/citi/",
+            "status": 301
+        },
+        {
+            "url": "https://www.citigroup.com/citi/",
+            "status": 301
+        },
+        {
+            "url": "https://www.citigroup.com/global",
+            "status": 200
+        }
+    ],
+    "categories": [
+        {
+            "id": 18,
+            "name": "Web frameworks",
+            "slug": "web-frameworks",
+            "technologies": [
+                {
+                    "cpe": "cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*",
+                    "icon": "Next.js.svg",
+                    "name": "Next.js",
+                    "slug": "next-js",
+                    "version": "12.1.6",
+                    "website": "https://nextjs.org",
+                    "categories": [
+                        {
+                            "id": 12,
+                            "name": "JavaScript frameworks",
+                            "slug": "javascript-frameworks"
+                        },
+                        {
+                            "id": 18,
+                            "name": "Web frameworks",
+                            "slug": "web-frameworks"
+                        },
+                        {
+                            "id": 22,
+                            "name": "Web servers",
+                            "slug": "web-servers"
+                        },
+                        {
+                            "id": 57,
+                            "name": "Static site generator",
+                            "slug": "static-site-generator"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Next.js is a React framework for developing single page Javascript applications."
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "name": "JavaScript frameworks",
+            "slug": "javascript-frameworks",
+            "technologies": [
+                {
+                    "cpe": "cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*",
+                    "icon": "Next.js.svg",
+                    "name": "Next.js",
+                    "slug": "next-js",
+                    "version": "12.1.6",
+                    "website": "https://nextjs.org",
+                    "categories": [
+                        {
+                            "id": 12,
+                            "name": "JavaScript frameworks",
+                            "slug": "javascript-frameworks"
+                        },
+                        {
+                            "id": 18,
+                            "name": "Web frameworks",
+                            "slug": "web-frameworks"
+                        },
+                        {
+                            "id": 22,
+                            "name": "Web servers",
+                            "slug": "web-servers"
+                        },
+                        {
+                            "id": 57,
+                            "name": "Static site generator",
+                            "slug": "static-site-generator"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Next.js is a React framework for developing single page Javascript applications."
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "name": "Web servers",
+            "slug": "web-servers",
+            "technologies": [
+                {
+                    "cpe": "cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*",
+                    "icon": "Next.js.svg",
+                    "name": "Next.js",
+                    "slug": "next-js",
+                    "version": "12.1.6",
+                    "website": "https://nextjs.org",
+                    "categories": [
+                        {
+                            "id": 12,
+                            "name": "JavaScript frameworks",
+                            "slug": "javascript-frameworks"
+                        },
+                        {
+                            "id": 18,
+                            "name": "Web frameworks",
+                            "slug": "web-frameworks"
+                        },
+                        {
+                            "id": 22,
+                            "name": "Web servers",
+                            "slug": "web-servers"
+                        },
+                        {
+                            "id": 57,
+                            "name": "Static site generator",
+                            "slug": "static-site-generator"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Next.js is a React framework for developing single page Javascript applications."
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "name": "Static site generator",
+            "slug": "static-site-generator",
+            "technologies": [
+                {
+                    "cpe": "cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*",
+                    "icon": "Next.js.svg",
+                    "name": "Next.js",
+                    "slug": "next-js",
+                    "version": "12.1.6",
+                    "website": "https://nextjs.org",
+                    "categories": [
+                        {
+                            "id": 12,
+                            "name": "JavaScript frameworks",
+                            "slug": "javascript-frameworks"
+                        },
+                        {
+                            "id": 18,
+                            "name": "Web frameworks",
+                            "slug": "web-frameworks"
+                        },
+                        {
+                            "id": 22,
+                            "name": "Web servers",
+                            "slug": "web-servers"
+                        },
+                        {
+                            "id": 57,
+                            "name": "Static site generator",
+                            "slug": "static-site-generator"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Next.js is a React framework for developing single page Javascript applications."
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Analytics",
+            "slug": "analytics",
+            "technologies": [
+                {
+                    "cpe": "",
+                    "icon": "Adobe Analytics.svg",
+                    "name": "Adobe Analytics",
+                    "slug": "adobe-analytics",
+                    "version": null,
+                    "website": "https://www.adobe.com/analytics/adobe-analytics.html",
+                    "categories": [
+                        {
+                            "id": 10,
+                            "name": "Analytics",
+                            "slug": "analytics"
+                        }
+                    ],
+                    "confidence": 100,
+                    "description": "Adobe Analytics is a web analytics, marketing and cross-channel analytics application."
+                }
+            ]
+        }
+    ]
+}
