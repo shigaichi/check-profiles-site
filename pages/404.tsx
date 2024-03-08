@@ -5,12 +5,21 @@ import i18nextConfig from 'next-i18next.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Custom404: NextPage<Props> = () => {
   const { t, i18n } = useTranslation('top')
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (typeof umami !== 'undefined') {
+      umami.track('404_error', { path: router.asPath })
+    }
+  }, [router.asPath])
 
   useEffect(() => {
     const locale = navigator.language
