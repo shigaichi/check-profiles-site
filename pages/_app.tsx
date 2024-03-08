@@ -4,10 +4,22 @@ import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
+import { useEffect } from 'react'
 import MainLayout from '../components/layout/mainLayout'
 import '../styles/globals.css'
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps, router }: AppProps) {
+  useEffect(() => {
+    window.onerror = (message) => {
+      if (typeof umami !== 'undefined') {
+        umami.track('page_error', {
+          path: router.asPath,
+          message: message as string,
+        })
+      }
+    }
+  }, [router.asPath])
+
   return (
     <ChakraProvider>
       <Head>
