@@ -16,13 +16,26 @@ type CompanyInfoProps = {
   companyCode: string
   companyName: string
   link: string
-  // TODO: check how to display array of strings
   market: string[]
   lastChecked: Date
 }
 
 const CompanyInfo = (props: CompanyInfoProps) => {
   const { t } = useTranslation('techs')
+
+  // TODO: check /ja/us/techs/companies/usb-pq
+  const marketsElement = (
+    <>
+      <Heading as="h3" size="xs" textTransform="uppercase">
+        {t('market')}
+      </Heading>
+      {props.market.map((item, index) => (
+        <Text key={index} pt="2" fontSize="sm">
+          {item}
+        </Text>
+      ))}
+    </>
+  )
 
   return (
     <Card>
@@ -34,14 +47,7 @@ const CompanyInfo = (props: CompanyInfoProps) => {
 
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
-          <Box>
-            <Heading as="h3" size="xs" textTransform="uppercase">
-              {t('market')}
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              {props.market}
-            </Text>
-          </Box>
+          <Box>{props.market.length > 0 && marketsElement}</Box>
           <Box>
             <Heading as="h3" size="xs" textTransform="uppercase">
               {t('companyCode')}
