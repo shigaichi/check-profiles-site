@@ -1,0 +1,10 @@
+{
+    "yAxisLabel": "Average Usage Count",
+    "marketShareOverTime": "Market Share Over Time",
+    "marketShareAnalysis": "Market Share Analysis",
+    "marketShare": "Market Share",
+    "marketShareText": "This page presents a comparison of the market share of various web technologies used on corporate websites.",
+    "comparisonText": "Comparison of the share of {{val}}",
+    "linkListText": "Explore Companies Using These Technologies:",
+    "linkText": "Companies using {{val}}"
+}

@@ -1,0 +1,10 @@
+{
+    "yAxisLabel": "平均使用数",
+    "marketShareOverTime": "の市場シェアの推移",
+    "marketShareAnalysis": "市場シェア分析",
+    "marketShare": "市場シェア",
+    "marketShareText": "このページでは、企業のウェブサイトで使用されているさまざまなウェブ技術の市場シェアを比較しています。",
+    "comparisonText": "{{val}} のシェアの比較",
+    "linkListText": "これらの技術を使用している企業を探索:",
+    "linkText": "{{val}} を使用している企業"
+}
