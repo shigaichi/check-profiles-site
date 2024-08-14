@@ -12,8 +12,6 @@ export const getCompanies = (market: MarketsType): Company[] => {
     return COMPANIES_CACHE[market]
   }
 
-  console.debug(`get companies of ${market} without cache`)
-
   const result =  fs
     .readdirSync(`data/${market}/techs/companies/`)
     .map((fileName) => path.join(`data/${market}/techs/companies/`, fileName))
