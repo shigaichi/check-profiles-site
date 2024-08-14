@@ -13,8 +13,6 @@ export const readFileWithCache = (fileName: string): Company => {
     return FILE_CACHE[fileName]
   }
 
-  console.debug(`read ${fileName}`)
-
   const jsonBlob = fs.readFileSync(fileName, 'utf8')
   const company = JSON.parse(jsonBlob) as Company
 

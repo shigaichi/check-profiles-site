@@ -16,8 +16,6 @@ export const getCategory = (targetTech: Technology): Category[] => {
     return CATEGORY_CACHE[targetTech.name];
   }
 
-  console.debug(`get category of ${targetTech.name} from all categories without cache`);
-
   const companies = getCompanies(Markets.US).concat(getCompanies(Markets.JA));
   const categories =  companies.flatMap((company) => company.categories).filter((it) => it.technologies.find((tech) => tech.name === targetTech.name));
   CATEGORY_CACHE[targetTech.name] = categories;
@@ -28,8 +26,6 @@ export const getAllCategories = (market: MarketsType): Category[] => {
   if (ALL_CATEGORY_CACHE[market]) {
     return ALL_CATEGORY_CACHE[market];
   }
-
-  console.debug(`get all categories of ${market} without cache`)
 
   const companies = getCompanies(market);
   const categories = companies.flatMap((company) => company.categories);
