@@ -112,18 +112,22 @@ const Comparison: NextPage<Props> = (props) => {
               {t('linkListText')}
             </Heading>
             <UnorderedList>
-              {props.chart.datasets.map((dataset) => (
-                <ListItem key={dataset.label}>
-                  <Link
-                    href={`/${router.query.locale}/${
-                      router.query.market
-                    }/techs/${dataset.link.slug.toLowerCase()}/1`}
-                    color="teal.500"
-                  >
-                    {t('linkText', { val: dataset.label })}
-                  </Link>
-                </ListItem>
-              ))}
+              {props.chart.datasets
+                .filter((dataset) => dataset.link)
+                .map((dataset) => (
+                  <ListItem key={dataset.label}>
+                    <Link
+                      href={`/${router.query.locale}/${
+                        router.query.market
+                      }/techs/${dataset.link.slug.toLowerCase()}/${
+                        dataset.link.initial
+                      }`}
+                      color="teal.500"
+                    >
+                      {t('linkText', { val: dataset.label })}
+                    </Link>
+                  </ListItem>
+                ))}
             </UnorderedList>
           </Flex>
         </Box>
@@ -253,17 +257,26 @@ function transformData(jsonData: TechData[], market: MarketsType): ChartData {
   }
 
   // Transform the data into the Chart.js format
-  const datasets = jsonData.map((tech) => ({
-    label: tech.label,
-    data: labels.map((label) => tech.data[label]),
-    borderColor: tech.borderColor,
-    backgroundColor: tech.backgroundColor,
-    fill: true,
-    link: {
-      slug: tech.techName,
-      initial: getUsedInitials(tech.techName, market)[0],
-    },
-  }))
+  const datasets = jsonData.map((tech) => {
+    const dataset: any = {
+      label: tech.label,
+      data: labels.map((label) => tech.data[label]),
+      borderColor: tech.borderColor,
+      backgroundColor: tech.backgroundColor,
+      fill: true,
+    }
+
+    // Conditionally add the 'link' property if the last data point is not 0
+    const lastDataPoint = tech.data[labels[labels.length - 1]]
+    if (lastDataPoint !== 0) {
+      // last data point is 0 == no company uses the tech.
+      dataset.link = {
+        slug: tech.techName,
+        initial: getUsedInitials(tech.techName, market)[0],
+      }
+    }
+    return dataset
+  })
 
   return {
     labels: labels.map((label) => formatDate(label)),
@@ -275,6 +288,5 @@ const formatDate = (input: string): string => {
   const year = input.slice(0, 4)
   const month = input.slice(4, 6)
 
-  // 年と月をスラッシュで結合して返す
   return `${year}/${month}`
 }
