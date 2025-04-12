@@ -4,25 +4,17 @@ import { appWithTranslation } from 'next-i18next'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
-import { useEffect } from 'react'
 import MainLayout from '../components/layout/mainLayout'
 import '../styles/globals.css'
 
 function App({ Component, pageProps, router }: AppProps) {
-  useEffect(() => {
-    window.onerror = (message) => {
-      if (typeof window.umami !== 'undefined') {
-        window.umami.track('page_error', {
-          path: router.asPath,
-          message: message as string,
-        })
-      }
-    }
-  }, [router.asPath])
+  const path = router.asPath
+  const isIndexable = /^\/(ja|en)\/(jp|us)\/techs\/comparison(\/|$)/.test(path)
 
   return (
     <ChakraProvider>
       <Head>
+        {!isIndexable && <meta name="robots" content="noindex, nofollow" />}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.webmanifest" />

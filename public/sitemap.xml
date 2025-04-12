@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- web-servers -->
+  <url><loc>https://lib.kyokko.work/ja/jp/techs/comparison/web-servers</loc></url>
+  <url><loc>https://lib.kyokko.work/ja/us/techs/comparison/web-servers</loc></url>
+  <url><loc>https://lib.kyokko.work/en/jp/techs/comparison/web-servers</loc></url>
+  <url><loc>https://lib.kyokko.work/en/us/techs/comparison/web-servers</loc></url>
+
+  <!-- paas -->
+  <url><loc>https://lib.kyokko.work/ja/jp/techs/comparison/paas</loc></url>
+  <url><loc>https://lib.kyokko.work/ja/us/techs/comparison/paas</loc></url>
+  <url><loc>https://lib.kyokko.work/en/jp/techs/comparison/paas</loc></url>
+  <url><loc>https://lib.kyokko.work/en/us/techs/comparison/paas</loc></url>
+
+  <!-- programming-languages -->
+  <url><loc>https://lib.kyokko.work/ja/jp/techs/comparison/programming-languages</loc></url>
+  <url><loc>https://lib.kyokko.work/ja/us/techs/comparison/programming-languages</loc></url>
+  <url><loc>https://lib.kyokko.work/en/jp/techs/comparison/programming-languages</loc></url>
+  <url><loc>https://lib.kyokko.work/en/us/techs/comparison/programming-languages</loc></url>
+
+  <!-- javascript-frameworks -->
+  <url><loc>https://lib.kyokko.work/ja/jp/techs/comparison/javascript-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/ja/us/techs/comparison/javascript-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/en/jp/techs/comparison/javascript-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/en/us/techs/comparison/javascript-frameworks</loc></url>
+
+  <!-- ui-frameworks -->
+  <url><loc>https://lib.kyokko.work/ja/jp/techs/comparison/ui-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/ja/us/techs/comparison/ui-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/en/jp/techs/comparison/ui-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/en/us/techs/comparison/ui-frameworks</loc></url>
+
+  <!-- web-frameworks -->
+  <url><loc>https://lib.kyokko.work/ja/jp/techs/comparison/web-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/ja/us/techs/comparison/web-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/en/jp/techs/comparison/web-frameworks</loc></url>
+  <url><loc>https://lib.kyokko.work/en/us/techs/comparison/web-frameworks</loc></url>
+
+</urlset>

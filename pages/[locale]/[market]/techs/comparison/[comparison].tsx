@@ -142,13 +142,7 @@ const Comparison: NextPage<Props> = (props) => {
 export default Comparison
 
 const getComparison = (market: MarketsType): Comparison[] => {
-  const dataDirectory = path.join(
-    process.cwd(),
-    'data',
-    market,
-    'techs',
-    'comparison'
-  )
+  const dataDirectory = path.join(process.cwd(), 'data', market, 'comparison')
   const filenames = fs.readdirSync(dataDirectory)
   const filename = filenames.find((filename) => {
     return filename.endsWith('.json')
