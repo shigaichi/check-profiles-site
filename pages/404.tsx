@@ -24,12 +24,6 @@ const Custom404: NextPage<Props> = () => {
     i18n.changeLanguage(detectedLng)
   }, [i18n])
 
-  useEffect(() => {
-    if (typeof window.umami !== 'undefined') {
-      window.umami.track('404_error', { path: router.asPath })
-    }
-  }, [router.asPath])
-
   return (
     <>
       <Head>

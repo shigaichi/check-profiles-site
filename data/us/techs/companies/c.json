@@ -183,30 +183,6 @@
                     "description": "Next.js is a React framework for developing single page Javascript applications."
                 }
             ]
-        },
-        {
-            "id": 10,
-            "name": "Analytics",
-            "slug": "analytics",
-            "technologies": [
-                {
-                    "cpe": "",
-                    "icon": "Adobe Analytics.svg",
-                    "name": "Adobe Analytics",
-                    "slug": "adobe-analytics",
-                    "version": null,
-                    "website": "https://www.adobe.com/analytics/adobe-analytics.html",
-                    "categories": [
-                        {
-                            "id": 10,
-                            "name": "Analytics",
-                            "slug": "analytics"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Adobe Analytics is a web analytics, marketing and cross-channel analytics application."
-                }
-            ]
         }
     ]
 }

@@ -35,31 +35,6 @@
                     "description": "Websites that have a shopping cart or checkout page, either using a known ecommerce platform or a custom solution."
                 }
             ]
-        },
-        {
-            "id": 10,
-            "name": "Analytics",
-            "slug": "analytics",
-            "technologies": [
-                {
-                    "cpe": null,
-                    "icon": "Adobe Analytics.svg",
-                    "name": "Adobe Analytics",
-                    "slug": "adobe-analytics",
-                    "version": null,
-                    "website": "https://www.adobe.com/analytics/adobe-analytics.html",
-                    "rootPath": true,
-                    "categories": [
-                        {
-                            "id": 10,
-                            "name": "Analytics",
-                            "slug": "analytics"
-                        }
-                    ],
-                    "confidence": 100,
-                    "description": "Adobe Analytics is a web analytics, marketing and cross-channel analytics application."
-                }
-            ]
         }
     ]
 }
