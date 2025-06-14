@@ -14,4 +14,4 @@ echo "${DOCKER_PASS}" | docker login -u "${DOCKER_ID}" --password-stdin
 docker push "${IMAGE_NAME}"
 
 docker image rm "${IMAGE_NAME}"
-docker sysytem prune -f
+docker system prune -f
