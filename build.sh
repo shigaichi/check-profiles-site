@@ -7,7 +7,7 @@ BUILD_TAG="${BUILD_TAG}"
 
 IMAGE_NAME="${DOCKER_ID}/check-profiles-site:${BUILD_TAG}"
 
-docker build --build-arg NUM_PROCS=1 -t "${IMAGE_NAME}" .
+docker build -t "${IMAGE_NAME}" .
 
 echo "${DOCKER_PASS}" | docker login -u "${DOCKER_ID}" --password-stdin
 
