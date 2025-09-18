@@ -1,4 +1,4 @@
-import { Category } from "../tech/Techs";
+import { Category } from '../tech/Techs'
 
 export type Company = {
   code: string
@@ -38,5 +38,3 @@ export type Url = {
 //   description: string
 //   rootPath?: boolean
 // }
-
-

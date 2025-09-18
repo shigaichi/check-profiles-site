@@ -8,11 +8,11 @@
     "export": "next export",
     "start": "next start",
     "lint": "run-s lint:*",
-    "lint:prettier": "prettier --check \"./{pages,lib,components,consts}/**/*.{ts,tsx}\"",
+    "lint:prettier": "prettier --check \"./{pages,lib,components,consts,features}/**/*.{ts,tsx}\"",
     "lint:next": "next lint",
     "lint:markuplint": "markuplint \"**/*.tsx\"",
     "fix": "run-s fix:*",
-    "fix:prettier": "prettier --write \"./{pages,lib,components,consts}/**/*.{ts,tsx}\"",
+    "fix:prettier": "prettier --write \"./{pages,lib,components,consts,features}/**/*.{ts,tsx}\"",
     "fix:next": "next lint --fix",
     "//": "this is not work: markuplint --fix \"**/*.tsx\"",
     "serve": "http-server out -p 8080"

@@ -1,4 +1,4 @@
-export type CompaniesUsingTechWithInitial ={
+export type CompaniesUsingTechWithInitial = {
   techName: string
   totalCompaniesNumber: number
   usingCompaniesNumber: number
@@ -6,7 +6,7 @@ export type CompaniesUsingTechWithInitial ={
   otherInitials: string[]
 }
 
-export type UsingCompany ={
+export type UsingCompany = {
   code: string
   nameJa?: string
   nameEn?: string
