@@ -31,7 +31,7 @@ const Custom404: NextPage<Props> = () => {
       </Head>
       <VStack>
         <Heading as={'h1'}>{t('pageNotFound')}</Heading>
-        <NextLink href={'/' + (i18n.language ?? 'en')} legacyBehavior passHref>
+        <NextLink href={`/${i18n.language ?? 'en'}`} legacyBehavior passHref>
           <Link style={{ textDecoration: 'none' }}>
             <Text textDecoration={'underline'}>{t('toTopPageFrom404')}</Text>
           </Link>

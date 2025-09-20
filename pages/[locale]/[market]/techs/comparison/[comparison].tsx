@@ -258,14 +258,7 @@ function transformData(jsonData: TechData[], market: MarketsType): ChartData {
 
   // Transform the data into the Chart.js format
   const datasets = jsonData.map((tech) => {
-    const dataset: {
-      label: string
-      data: number[]
-      borderColor: string
-      backgroundColor: string
-      fill: boolean
-      link?: { slug: string; initial: string }
-    } = {
+    const dataset: Dataset = {
       label: tech.label,
       data: labels.map((label) => tech.data[label]),
       borderColor: tech.borderColor,

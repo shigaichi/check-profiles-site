@@ -13,7 +13,7 @@ export const getUsedInitials = (
   const techDir = `data/${market}/techs/techs/${slug}`
   const files = fs.readdirSync(techDir)
   if (files.length < 1) {
-    throw new Error('No techs found: ' + slug)
+    throw new Error(`No techs found: ${slug} (market: ${market})`)
   }
   const json = JSON.parse(fs.readFileSync(`${techDir}/${files[0]}`, 'utf8'))
   return json.otherInitials
