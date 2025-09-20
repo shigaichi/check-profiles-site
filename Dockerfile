@@ -25,7 +25,7 @@ RUN find . -name '*.gz' | while read gzfile; do \
   [ -f "$origfile" ] && rm "$origfile"; \
 done
 
-FROM nginx:1.27.5-alpine
+FROM nginx:1.29.1-alpine
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=compressor /compressed /usr/share/nginx/html

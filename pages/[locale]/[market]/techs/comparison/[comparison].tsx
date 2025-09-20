@@ -113,7 +113,13 @@ const Comparison: NextPage<Props> = (props) => {
             </Heading>
             <UnorderedList>
               {props.chart.datasets
-                .filter((dataset) => dataset.link)
+                .filter(
+                  (
+                    d
+                  ): d is Dataset & {
+                    link: { slug: string; initial: string }
+                  } => !!d.link
+                )
                 .map((dataset) => (
                   <ListItem key={dataset.label}>
                     <Link
@@ -213,25 +219,25 @@ type TechData = {
   backgroundColor: string
 }
 
+type Dataset = {
+  label: string
+  data: number[]
+  borderColor: string
+  backgroundColor: string
+  fill: boolean
+  link?: {
+    slug: string
+    initial: string
+  }
+}
+
 type ChartData = {
   labels: string[]
-  datasets: {
-    label: string
-    data: number[]
-    borderColor: string
-    backgroundColor: string
-    fill: boolean
-    link: {
-      slug: string
-      initial: string
-    }
-  }[]
+  datasets: Dataset[]
 }
 
 function transformData(jsonData: TechData[], market: MarketsType): ChartData {
-  if (jsonData.length === 0) {
-    throw new Error('The input JSON is empty.')
-  }
+  if (jsonData.length === 0) throw new Error('The input JSON is empty.')
 
   // Extract labels from the first entry
   const labels = Object.keys(jsonData[0].data).sort()
@@ -252,7 +258,7 @@ function transformData(jsonData: TechData[], market: MarketsType): ChartData {
 
   // Transform the data into the Chart.js format
   const datasets = jsonData.map((tech) => {
-    const dataset: any = {
+    const dataset: Dataset = {
       label: tech.label,
       data: labels.map((label) => tech.data[label]),
       borderColor: tech.borderColor,
@@ -262,13 +268,34 @@ function transformData(jsonData: TechData[], market: MarketsType): ChartData {
 
     // Conditionally add the 'link' property if the last data point is not 0
     const lastDataPoint = tech.data[labels[labels.length - 1]]
+
+    // last data point is 0 == no company uses the tech.
     if (lastDataPoint !== 0) {
-      // last data point is 0 == no company uses the tech.
-      dataset.link = {
-        slug: tech.techName,
-        initial: getUsedInitials(tech.techName, market)[0],
+      try {
+        const initials = getUsedInitials(tech.techName, market)
+        const initial = initials?.[0]
+        if (initial) {
+          dataset.link = {
+            slug: tech.techName,
+            initial,
+          }
+        }
+      } catch (e: unknown) {
+        // getUsedInitials will throws ENOENT because lastDataPoint is month average.
+        const err = e as NodeJS.ErrnoException
+        if (err?.code === 'ENOENT') {
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn(
+              `getUsedInitials ENOENT for ${tech.techName} (${market}):`,
+              err.message
+            )
+          }
+        } else {
+          throw e
+        }
       }
     }
+
     return dataset
   })
 
