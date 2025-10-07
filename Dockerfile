@@ -10,13 +10,15 @@ RUN --mount=type=cache,target=/root/.npm true
 # out を tmpfs に作って、結果だけ残す
 RUN --mount=type=bind,source=.,target=/src,ro \
     --mount=type=cache,target=/root/.npm \
+    --mount=type=cache,target=/src/node_modules \
+    --mount=type=tmpfs,target=/src/.next \
     --mount=type=tmpfs,target=/out \
     bash -lc '\
       cd /src && \
-      npm ci && \
+      npm ci --prefer-offline --no-audit --progress=false && \
       npm run build && \
-      npm run export && \
-      cp -a out/* /out/'
+      # "next export" の出力先を /out に直で出す（/src/out を作らない）
+      npm run export -- -o /out'
 
 FROM debian:12.11-slim AS compressor
 RUN apt-get update && apt-get install -y zopfli findutils \
