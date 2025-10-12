@@ -7,11 +7,10 @@ BUILD_TAG="${BUILD_TAG}"
 
 IMAGE_NAME="${DOCKER_ID}/check-profiles-site:${BUILD_TAG}"
 
-docker build -t "${IMAGE_NAME}" .
-
 echo "${DOCKER_PASS}" | docker login -u "${DOCKER_ID}" --password-stdin
 
-docker push "${IMAGE_NAME}"
+docker buildx inspect check-profile-builder >/dev/null 2>&1 || docker buildx create --name check-profile-builder --use
 
-docker image rm "${IMAGE_NAME}"
-docker system prune -f
+docker buildx build -t "${IMAGE_NAME}" --output type=registry,force-compression=true,compression=zstd --cache-to=type=local,dest=docker_cache .
+
+docker buildx prune -af --max-used-space 1gb
