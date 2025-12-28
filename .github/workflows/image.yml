@@ -1,8 +1,8 @@
 name: Build and Push to GHCR
 
 on:
-  #  schedule:
-  #    - cron: "0 0 15 * *"
+  schedule:
+    - cron: '0 17 * * 1'
   pull_request:
     branches:
       - main
@@ -17,8 +17,8 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -32,9 +32,6 @@ jobs:
 
       - name: Download data script
         run: ./data.sh
-
-#      - name: Set up QEMU
-#        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3.7.0
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
@@ -51,7 +48,6 @@ jobs:
         with:
           context: .
           push: true
-#          platforms: linux/amd64, linux/arm64
           tags: |
             ghcr.io/${{ github.repository_owner }}/check-profiles-site:latest
             ghcr.io/${{ github.repository_owner }}/check-profiles-site:${{ github.sha }}
