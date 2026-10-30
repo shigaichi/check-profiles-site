@@ -22,7 +22,7 @@ RUN bash -c 'find . -type f \( -name "*.js" -o -name "*.css" -o -name "*.svg" \)
       [ -f "$origfile" ] && rm -f "$origfile"; \
     done'
 
-FROM nginx:1.30.3-alpine3.23-slim
+FROM nginx:1.31.8-alpine3.24-slim
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=compressor /compressed /usr/share/nginx/html
